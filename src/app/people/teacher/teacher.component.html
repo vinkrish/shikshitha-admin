@@ -1,36 +1,33 @@
-<div>
-<div>
-    <table class="table table-bordered table-striped table-sm">
-        <caption></caption>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Mobile</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let teacher of teachers" (click)="onSelect(teacher)" [class.selected]="teacher === selectedTeacher">
-                <td>{{teacher.name}}</td>
-                <td>{{teacher.username}}</td>
-                <td>{{teacher.password}}</td>
-                <td>{{teacher.mobile}}</td>
-                <td>
-                    <button type="button" md-button color="primary" (click)="gotoEdit(teacher, $event)">edit</button>
-                </td>
-                <td>
-                    <button type="button" md-button color="accent" (click)="deleteTeacher(teacher, $event)">delete</button>
-                </td>
-            </tr>
-        </tbody>
+<div class="card">
+  <div class="col-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Mobile</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let teacher of teachers" (click)="onSelect(teacher)" [class.selected]="teacher === selectedTeacher">
+          <td>{{teacher.name}}</td>
+          <td>{{teacher.username}}</td>
+          <td>{{teacher.mobile}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-primary btn-sm" (click)="gotoEdit(teacher, $event)">edit</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteTeacher(teacher, $event)">delete</button>
+          </td>
+        </tr>
+      </tbody>
     </table>
+  </div>
 </div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="addTeacher()">Add New</button>
-</div>
 <div *ngIf="addingTeacher">
-    <ui-teacher-detail (close)="close($event)"></ui-teacher-detail>
+  <ui-teacher-detail (close)="close($event)"></ui-teacher-detail>
 </div>

@@ -1,34 +1,33 @@
-<div>
-<div class="col-md-6">
-    <table class="table table-bordered table-striped table-sm">
-        <caption></caption>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let cosch of cceCoschs" (click)="onSelect(cosch)" [class.selected]="cosch === selectedCceCosch">
-                <td>{{cosch.name}}</td>
-                <td>
-                    <button type="button" md-button color="primary" (click)="gotoEdit(cosch, $event)">
-                        edit
-                    </button>
-                </td>
-                <td>
-                    <button type="button" md-button color="accent" (click)="deleteCosch(cosch, $event)">
-                        delete
-                    </button>
-                </td>
-            </tr>
-        </tbody>
+<div class="card">
+  <div class="col-md-6">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cosch of cceCoschs" (click)="onSelect(cosch)" [class.selected]="cosch === selectedCceCosch">
+          <td>{{cosch.name}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-primary btn-sm" (click)="gotoEdit(cosch, $event)">
+              edit
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteCosch(cosch, $event)">
+              delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </table>
+  </div>
 </div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="addCosch()">Add New </button>
-</div>
 <div *ngIf="addingCceCosch">
-    <ui-cce-coscholastic-detail (close)="close($event)"></ui-cce-coscholastic-detail>
+  <ui-cce-coscholastic-detail (close)="close($event)"></ui-cce-coscholastic-detail>
 </div>

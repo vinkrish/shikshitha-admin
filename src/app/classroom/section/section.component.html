@@ -1,40 +1,44 @@
 <div>
-<div>
-    <label>Select Class: </label>
-    <select [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+  <div class="card">
+    <div class="card-header">
+      Manage Data
+    </div>
+    <div class="card-block">
+      <label>Select Class: </label>
+      <select [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
         <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
-    </select>
-</div>
-<div *ngIf="selectedClass" class="col-md-6">
-    <table class="table table-bordered table-striped table-sm">
-        <caption></caption>
-        <thead>
+      </select>
+      <div *ngIf="selectedClass" class="col-md-6">
+        <table class="table table-striped">
+          <thead>
             <tr>
-                <th>Name</th>
-                <th></th>
-                <th></th>
+              <th>Name</th>
+              <th></th>
+              <th></th>
             </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
             <tr *ngFor="let section of sections" (click)="onSelect(section)" [class.selected]="section === selectedSection">
-                <td class="col-md-4">{{section.sectionName}}</td>
-                <td>
-                    <button type="button" md-button color="primary" (click)="gotoEdit(section, $event)">
-                        edit
-                    </button>
-                </td>
-                <td>
-                    <button type="button" md-button color="accent" (click)="deleteSection(section, $event)">
-                        delete
-                    </button>
-                </td>
+              <td class="col-md-3">{{section.sectionName}}</td>
+              <td>
+                <button type="button" class="btn btn-outline-primary btn-sm" (click)="gotoEdit(section, $event)">
+                  edit
+                </button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteSection(section, $event)">
+                  delete
+                </button>
+              </td>
             </tr>
-        </tbody>
-    </table>
-</div>
-<div class="error" *ngIf="error">{{error}}</div>
-<button type="button" class="btn btn-success btn-md" (click)="addSection()">Add New </button>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="error" *ngIf="error">{{error}}</div>
+  <button type="button" class="btn btn-success btn-md" (click)="addSection()">Add New </button>
 </div>
 <div *ngIf="addingSection">
-    <ui-section-detail (close)="close($event)"></ui-section-detail>
+  <ui-section-detail (close)="close($event)"></ui-section-detail>
 </div>

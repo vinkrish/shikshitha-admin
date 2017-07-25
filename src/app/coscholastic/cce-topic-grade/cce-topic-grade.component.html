@@ -1,97 +1,97 @@
-<div>
 <form #form="ngForm">
-<div>
+  <div class="form-group row">
     <label class="col-md-2">Coscholastic: </label>
-    <select name="coschName" [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
-        <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
+    <select class="col-md-4" name="coschName" [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
+      <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
     </select>
-</div>
-<br/>
-<div>
+  </div>
+  <div class="form-group row">
     <label class="col-md-2">Section Heading: </label>
-    <select name="secHeadName" [ngModel]="selectedSectionHeading" (ngModelChange)="sectionHeadingSelected($event)">
-        <option *ngFor="let secHead of sectionHeadings" [ngValue]="secHead">{{secHead.name}}</option>
+    <select class="col-md-4" name="secHeadName" [ngModel]="selectedSectionHeading" (ngModelChange)="sectionHeadingSelected($event)">
+      <option *ngFor="let secHead of sectionHeadings" [ngValue]="secHead">{{secHead.name}}</option>
     </select>
-</div>
-<br/>
-<div>
+  </div>
+  <div class="form-group row">
     <label for="topicName" class="col-md-2">Topic: </label>
-    <select name="topicName" name="topicName" [ngModel]="selectedTopicPrimary" (ngModelChange)="topicSelected($event)">
-        <option *ngFor="let topic of topicPrimarys" [ngValue]="topic">{{topic.name}}</option>
+    <select class="col-md-4" name="topicName" name="topicName" [ngModel]="selectedTopicPrimary" (ngModelChange)="topicSelected($event)">
+      <option *ngFor="let topic of topicPrimarys" [ngValue]="topic">{{topic.name}}</option>
     </select>
-</div>
+  </div>
 </form>
-<br>
-<div class="col-md-6">
-    <table class="table table-bordered table-striped table-sm">
-        <caption></caption>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let grade of topicGrades" (click)="onSelect(grade)" [class.selected]="grade === selectedTopicGrade">
-                <td><input [(ngModel)]="grade.grade"/></td>
-                <td><input [(ngModel)]="grade.value"/></td>
-                <td>
-                    <button type="button" md-button color="primary" (click)="update(grade, $event)">
-                        update
-                    </button>
-                </td>
-                <td>
-                    <button type="button" md-button color="accent" (click)="delete(grade, $event)">
-                        delete
-                    </button>
-                </td>
-            </tr>
-        </tbody>
+<div class="card">
+  <div class="col-md-6">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let grade of topicGrades" (click)="onSelect(grade)" [class.selected]="grade === selectedTopicGrade">
+          <td>
+            <input [(ngModel)]="grade.grade" />
+          </td>
+          <td>
+            <input [(ngModel)]="grade.value" />
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-primary btn-sm" (click)="update(grade, $event)">
+              update
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="delete(grade, $event)">
+              delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </table>
+  </div>
 </div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="add()">Add New </button>
-</div>
 <div *ngIf="addingTopicGrade">
-    <div *ngIf="topicGrade">
+  <div *ngIf="topicGrade">
     <h3>CCE Topic Grade Details</h3>
     <br/>
     <form (ngSubmit)="save()" #classForm="ngForm">
-        <div class="form-group row">
-            <label for="name" class="col-md-2">Grade :</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="name" required [(ngModel)]="topicGrade.grade">
-            </div>
+      <div class="form-group row">
+        <label for="name" class="col-md-2">Grade :</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="name" required [(ngModel)]="topicGrade.grade">
         </div>
-        <div class="form-group row">
-            <label for="val" class="col-md-2">Value :</label>
-            <div class="col-md-4">
-                <input type="number" class="form-control" name="val" required [(ngModel)]="topicGrade.value">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="val" class="col-md-2">Value :</label>
+        <div class="col-md-4">
+          <input type="number" class="form-control" name="val" required [(ngModel)]="topicGrade.value">
         </div>
-        <div class="form-group row">
-            <label for="coschName" class="col-md-2">Coscholastic Name :</label>
-            <div class="col-md-4">
-                {{selectedCosch.name}}
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="coschName" class="col-md-2">Coscholastic Name :</label>
+        <div class="col-md-4">
+          {{selectedCosch.name}}
         </div>
-        <div class="form-group row">
-            <label for="secHeadName" class="col-md-2">Section Heading Name :</label>
-            <div class="col-md-4">
-                {{selectedSectionHeading.name}}
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="secHeadName" class="col-md-2">Section Heading Name :</label>
+        <div class="col-md-4">
+          {{selectedSectionHeading.name}}
         </div>
-        <div class="form-group row">
-            <label for="topicName" class="col-md-2">Topic Primary Name :</label>
-            <div class="col-md-4">
-                {{selectedTopicPrimary.name}}
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="topicName" class="col-md-2">Topic Primary Name :</label>
+        <div class="col-md-4">
+          {{selectedTopicPrimary.name}}
         </div>
-        <button type="button" class="btn btn-normal btn-md" (click)="close()">Back</button>
-        <button type="submit" class="btn btn-success btn-md">Save</button>
+      </div>
+      <button type="button" class="btn btn-normal btn-md" (click)="close()">Back</button>
+      <button type="submit" class="btn btn-success btn-md">Save</button>
     </form>
     <br/>
-</div>
+  </div>
 </div>

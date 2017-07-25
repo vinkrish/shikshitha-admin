@@ -1,34 +1,33 @@
-<div>
-<div class="col-md-6">
-    <table class="table table-bordered table-striped table-sm">
-        <caption></caption>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let subjectGroup of subjectGroups" (click)="onSelect(subjectGroup)" [class.selected]="subjectGroup === selectedSubjectGroup">
-                <td class="col-md-4">{{subjectGroup.subjectGroupName}}</td>
-                <td>
-                    <button type="button" md-button color="primary" (click)="gotoEdit(subjectGroup, $event)">
-                        edit
-                    </button>
-                </td>
-                <td>
-                    <button type="button" md-button color="accent" (click)="deleteSubjectGroup(subjectGroup, $event)">
-                        delete
-                    </button>
-                </td>
-            </tr>
-        </tbody>
+<div class="card">
+  <div class="col-md-6">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let subjectGroup of subjectGroups" (click)="onSelect(subjectGroup)" [class.selected]="subjectGroup === selectedSubjectGroup">
+          <td class="col-md-3">{{subjectGroup.subjectGroupName}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-primary btn-sm" (click)="gotoEdit(subjectGroup, $event)">
+              edit
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteSubjectGroup(subjectGroup, $event)">
+              delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </table>
+  </div>
 </div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="addSubjectGroup()">Add New </button>
-</div>
 <div *ngIf="addingSubjectGroup">
-    <ui-subject-group-detail (close)="close($event)"></ui-subject-group-detail>
+  <ui-subject-group-detail (close)="close($event)"></ui-subject-group-detail>
 </div>

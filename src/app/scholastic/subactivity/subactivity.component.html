@@ -1,152 +1,150 @@
-<div>
 <div class="form-group row">
-    <label class="col-md-1">Class: </label>
-    <div class="col-md-4">
+  <label class="col-md-1">Class: </label>
+  <div class="col-md-4">
     <select class="form-control" name="clas" [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
-        <option *ngFor="let clas of classes" [ngValue]="clas">{{clas.className}}</option>
+      <option *ngFor="let clas of classes" [ngValue]="clas">{{clas.className}}</option>
     </select>
-    </div>
+  </div>
 </div>
 <div class="form-group row">
-    <label class="col-md-1">Exam: </label>
-    <div class="col-md-4">
+  <label class="col-md-1">Exam: </label>
+  <div class="col-md-4">
     <select class="form-control" name="exm" [ngModel]="selectedExam" (ngModelChange)="examSelected($event)">
-        <option *ngFor="let exam of exams" [ngValue]="exam">{{exam.examName}}</option>
+      <option *ngFor="let exam of exams" [ngValue]="exam">{{exam.examName}}</option>
     </select>
-    </div>
+  </div>
 </div>
 <div class="form-group row">
-    <label class="col-md-1">Section: </label>
-    <div class="col-md-4">
+  <label class="col-md-1">Section: </label>
+  <div class="col-md-4">
     <select class="form-control" name="sec" [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
-        <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+      <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
     </select>
-    </div>
+  </div>
 </div>
 <div class="form-group row">
-    <label class="col-md-1">Subject: </label>
-    <div class="col-md-4">
+  <label class="col-md-1">Subject: </label>
+  <div class="col-md-4">
     <select class="form-control" name="subj" [ngModel]="selectedExamSubject" (ngModelChange)="examSubjectSelected($event)">
-        <option *ngFor="let examSubject of examSubjects" [ngValue]="examSubject">{{examSubject.subjectName}}</option>
+      <option *ngFor="let examSubject of examSubjects" [ngValue]="examSubject">{{examSubject.subjectName}}</option>
     </select>
-    </div>
+  </div>
 </div>
 <div class="form-group row">
-    <label class="col-md-1">Activity: </label>
-    <div class="col-md-4">
+  <label class="col-md-1">Activity: </label>
+  <div class="col-md-4">
     <select class="form-control" name="act" [ngModel]="selectedActivity" (ngModelChange)="activitySelected($event)">
-        <option *ngFor="let act of activities" [ngValue]="act">{{act.activityName}}</option>
+      <option *ngFor="let act of activities" [ngValue]="act">{{act.activityName}}</option>
     </select>
-    </div>
+  </div>
 </div>
-<div>
-    <table class="table table-bordered table-striped table-sm">
-        <caption></caption>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Max Mark</th>
-                <th>Weightage</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let subact of subActivities" (click)="onSelect(subact)" [class.selected]="subact === selecteSubdActivity">
-                <td>
-                    <input [(ngModel)]="subact.subActivityName"/>
-                </td>
-                <td>
-                    <input [(ngModel)]="subact.type"/>
-                </td>
-                <td>
-                    <input [(ngModel)]="subact.maximumMark"/>
-                </td>
-                <td>
-                    <input [(ngModel)]="subact.weightage"/>
-                </td>
-                <td>
-                    <button type="button" md-button color="primary" (click)="update(subact, $event)">
-                        update
-                    </button>
-                </td>
-                <td>
-                    <button type="button" md-button color="accent" (click)="delete(subact, $event)">
-                        delete
-                    </button>
-                </td>
-            </tr>
-        </tbody>
+<div class="card">
+  <div class="col-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Max Mark</th>
+          <th>Weightage</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let subact of subActivities" (click)="onSelect(subact)" [class.selected]="subact === selecteSubdActivity">
+          <td>
+            <input [(ngModel)]="subact.subActivityName" />
+          </td>
+          <td>
+            <input [(ngModel)]="subact.type" />
+          </td>
+          <td>
+            <input [(ngModel)]="subact.maximumMark" />
+          </td>
+          <td>
+            <input [(ngModel)]="subact.weightage" />
+          </td>
+          <td>
+            <button type="button" md-button color="primary" (click)="update(subact, $event)">
+              update
+            </button>
+          </td>
+          <td>
+            <button type="button" md-button color="accent" (click)="delete(subact, $event)">
+              delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </table>
+  </div>
 </div>
-<div class="clearfix"></div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="add()">Add </button>
-</div>
 <div *ngIf="addingSubActivity">
-    <div *ngIf="subActivity">
+  <div *ngIf="subActivity">
     <br>
     <h3>New Sub-Activity</h3>
     <br/>
     <form (ngSubmit)="save()" #form="ngForm">
-        <div class="form-group row">
-            <label for="className" class="col-md-1">Class :</label>
-            <div class="col-md-4">
-                {{selectedClass.className}}
-            </div>
+      <div class="form-group row">
+        <label for="className" class="col-md-1">Class :</label>
+        <div class="col-md-4">
+          {{selectedClass.className}}
         </div>
-        <div class="form-group row">
-            <label for="sectionName" class="col-md-1">Section :</label>
-            <div class="col-md-4">
-                {{selectedSection.sectionName}}
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="sectionName" class="col-md-1">Section :</label>
+        <div class="col-md-4">
+          {{selectedSection.sectionName}}
         </div>
-        <div class="form-group row">
-            <label for="exanName" class="col-md-1">Exam :</label>
-            <div class="col-md-4">
-                {{selectedExam.examName}}
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="exanName" class="col-md-1">Exam :</label>
+        <div class="col-md-4">
+          {{selectedExam.examName}}
         </div>
-        <div class="form-group row">
-            <label for="subjectName" class="col-md-1">Subject :</label>
-            <div class="col-md-4">
-                {{selectedExamSubject.subjectName}}
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="subjectName" class="col-md-1">Subject :</label>
+        <div class="col-md-4">
+          {{selectedExamSubject.subjectName}}
         </div>
-        <div class="form-group row">
-            <label for="activityName" class="col-md-1">Activity :</label>
-            <div class="col-md-4">
-                {{selectedActivity.activityName}}
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="activityName" class="col-md-1">Activity :</label>
+        <div class="col-md-4">
+          {{selectedActivity.activityName}}
         </div>
-        <div class="form-group row">
-            <label for="name" class="col-md-1">Name</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="name" required [(ngModel)]="subActivity.subActivityName">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="name" class="col-md-1">Name</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="name" required [(ngModel)]="subActivity.subActivityName">
         </div>
-        <div class="form-group row">
-            <label for="type" class="col-md-1">Type</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="type" required [(ngModel)]="subActivity.type">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="type" class="col-md-1">Type</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="type" required [(ngModel)]="subActivity.type">
         </div>
-        <div class="form-group row">
-            <label for="maxMark" class="col-md-1">Maximum Mark</label>
-            <div class="col-md-4">
-                <input type="number" class="form-control" name="maxMark" required [(ngModel)]="subActivity.maximumMark">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="maxMark" class="col-md-1">Maximum Mark</label>
+        <div class="col-md-4">
+          <input type="number" class="form-control" name="maxMark" required [(ngModel)]="subActivity.maximumMark">
         </div>
-        <div class="form-group row">
-            <label for="weightage" class="col-md-1">Weightage</label>
-            <div class="col-md-4">
-                <input type="number" class="form-control" name="weightage" required [(ngModel)]="subActivity.weightage">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="weightage" class="col-md-1">Weightage</label>
+        <div class="col-md-4">
+          <input type="number" class="form-control" name="weightage" required [(ngModel)]="subActivity.weightage">
         </div>
-        <button type="button" class="btn btn-normal btn-md" (click)="close()">Back</button>
-        <button type="submit" class="btn btn-success btn-md">Save</button>
+      </div>
+      <button type="button" class="btn btn-normal btn-md" (click)="close()">Back</button>
+      <button type="submit" class="btn btn-success btn-md">Save</button>
     </form>
     <br/>
-</div>
+  </div>
 </div>

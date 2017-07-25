@@ -126,7 +126,7 @@ const MENUITEMS = [
         name: 'Sub-Activity'
       },
       {
-        state: 'subactibity-score',
+        state: 'subactivity-score',
         name: 'Sub-Activity Score'
       },
       {

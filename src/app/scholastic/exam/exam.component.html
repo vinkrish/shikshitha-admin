@@ -1,48 +1,47 @@
-<div>
-<div>
-    <label>Class: </label>
-    <select [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
-        <option *ngFor="let clas of classes" [ngValue]="clas">{{clas.className}}</option>
-    </select>
+<div class="form-group row">
+  <label class="col-md-1">Class: </label>
+  <select class="col-md-4" [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+    <option *ngFor="let clas of classes" [ngValue]="clas">{{clas.className}}</option>
+  </select>
 </div>
-<div class="col-md-8">
-    <table class="table table-bordered table-striped table-sm">
-        <caption></caption>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Term</th>
-                <th>Type</th>
-                <th>Calculation</th>
-                <th>Percentage</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let exam of exams" (click)="onSelect(exam)" [class.selected]="exam === selectedExam">
-                <td>{{exam.examName}}</td>
-                <td>{{exam.term}}</td>
-                <td>{{exam.type}}</td>
-                <td>{{exam.calculation}}</td>
-                <td>{{exam.percentage}}</td>
-                <td>
-                    <button type="button" md-button color="primary" (click)="gotoEdit(exam, $event)">
-                        edit
-                    </button>
-                </td>
-                <td>
-                    <button type="button" md-button color="accent" (click)="deleteExam(exam, $event)">
-                        delete
-                    </button>
-                </td>
-            </tr>
-        </tbody>
+<div class="card">
+  <div class="col-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Term</th>
+          <th>Type</th>
+          <th>Calculation</th>
+          <th>Percentage</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let exam of exams" (click)="onSelect(exam)" [class.selected]="exam === selectedExam">
+          <td>{{exam.examName}}</td>
+          <td>{{exam.term}}</td>
+          <td>{{exam.type}}</td>
+          <td>{{exam.calculation}}</td>
+          <td>{{exam.percentage}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-primary btn-sm" (click)="gotoEdit(exam, $event)">
+              edit
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteExam(exam, $event)">
+              delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </table>
+  </div>
 </div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="addExam()">Add New </button>
-</div>
 <div *ngIf="addingExam">
-    <ui-exam-detail (close)="close($event)"></ui-exam-detail>
+  <ui-exam-detail (close)="close($event)"></ui-exam-detail>
 </div>
