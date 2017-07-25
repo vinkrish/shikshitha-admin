@@ -1,0 +1,28 @@
+<div *ngIf="section">
+    <br/>
+    <form (ngSubmit)="save()" #form="ngForm">
+        <div class="form-group row">
+            <label for="name" class="col-md-1">Name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="name" required [(ngModel)]="section.sectionName">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="className" class="col-md-1">Class</label>
+            <div class="col-md-4">
+                {{className}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="type" class="col-md-1">Teacher</label>
+            <div class="col-md-4">
+                <select class="form-control" id="type" name="type" required [(ngModel)]="section.teacherId">
+                    <option *ngFor="let teacher of teachers" [ngValue]="teacher.id">{{teacher.name}}</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
+        <button type="submit" class="btn btn-success btn-md">Save</button>
+    </form>
+    <br/>
+</div>

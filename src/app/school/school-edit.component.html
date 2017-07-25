@@ -1,0 +1,180 @@
+<div *ngIf="school">
+    <form>
+        <div class="form-group row">
+            <label for="name" class="col-md-2">Name</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="name" required [(ngModel)]="school.schoolName">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="type" class="col-md-2">Principal</label>
+            <div class="col-md-4">
+                <select class="form-control" id="type" name="type" required [(ngModel)]="school.principalId">
+                    <option *ngFor="let teacher of teachers" [ngValue]="teacher.id">{{teacher.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="username" class="col-md-2">Username</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="username" required [(ngModel)]="school.adminUsername">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="password" class="col-md-2">Password</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="password" required [(ngModel)]="school.adminPassword">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="short" class="col-md-2">Shortened Name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="short" required [(ngModel)]="school.shortenedSchoolName">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="website" class="col-md-2">Website</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="website" required [(ngModel)]="school.website">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="contact" class="col-md-2">Contact Person</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="contact" required [(ngModel)]="school.contactPersonName">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="numberOfStudents" class="col-md-2">Number of students</label>
+            <div class="col-md-4">
+                <input type="number" class="form-control" name="numberOfStudents" required [(ngModel)]="school.numberOfStudents">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="landline" class="col-md-2">Landline</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="landline" required [(ngModel)]="school.landline">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="mobile1" class="col-md-2">Mobile 1</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="mobile1" required [(ngModel)]="school.mobile1">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="mobile2" class="col-md-2">Mobile 2</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="mobile2" required [(ngModel)]="school.mobile2">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-md-2">Email</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="email" required [(ngModel)]="school.email">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="street" class="col-md-2">Street</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="street" required [(ngModel)]="school.street">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="city" class="col-md-2">City</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="city" required [(ngModel)]="school.city">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="district" class="col-md-2">District</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="district" required [(ngModel)]="school.district">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="state" class="col-md-2">State</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="state" required [(ngModel)]="school.state">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="pincode" class="col-md-2">Pincode</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="pincode" required [(ngModel)]="school.pincode">
+            </div>
+        </div>
+        <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
+        <button type="submit" class="btn btn-success btn-md" (click)="save()">Save</button>
+    </form>
+    <br/>
+    <div *ngIf="service">
+    <form (ngSubmit)="updateService()" #serviceform="ngForm">
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isMessage" [(ngModel)]="service.isMessage">
+	          Allow Message
+	        </label>
+	      	</div>
+    	</div>
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isSms" [(ngModel)]="service.isSms" (ngModelChange)="onCheckedChange(service.isSms)">
+	          Allow SMS
+	        </label>
+	      	</div>
+    	</div>
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isChat" [(ngModel)]="service.isChat" >
+	          Allow Chat
+	        </label>
+	      	</div>
+    	</div>
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isAttendance" [(ngModel)]="service.isAttendance">
+	          Enable Attendance
+	        </label>
+	      	</div>
+    	</div>
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isAttSms" [(ngModel)]="service.isAttendanceSms">
+	          Allow Attendance SMS
+	        </label>
+	      	</div>
+    	</div>
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isHomework" [(ngModel)]="service.isHomework">
+	          Enable Homework
+	        </label>
+	      	</div>
+    	</div>
+    	<div class="form-group">
+	      	<div class="checkbox">
+	        <label>
+	          <input type="checkbox" name="isHwSms" [(ngModel)]="service.isHomeworkSms">
+	          Allow Homework SMS
+	        </label>
+	      	</div>
+    	</div>
+        <div class="form-group">
+            <div class="checkbox">
+            <label>
+              <input type="checkbox" name="isTimetable" [(ngModel)]="service.isTimetable" >
+              Enable Timetable
+            </label>
+            </div>
+        </div>
+    	<button type="submit" class="btn btn-success btn-md">Update</button>
+    </form>
+    </div>
+</div>

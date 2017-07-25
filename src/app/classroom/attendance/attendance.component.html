@@ -1,0 +1,99 @@
+<div>
+<form>
+    <div>
+        <label for="className" class="col-md-2">Select Class :</label>
+        <select name="className" required [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+            <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+        </select>
+    </div>
+    <br/>
+    <div>
+        <label for="sectionName" class="col-md-2">Select Section :</label>
+        <select name="sectionName" required [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+            <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+        </select>
+    </div>
+    <br/>
+    <div *ngIf="selectedClass.attendanceType == 'Daily'">
+        <label for="date" class="col-md-2">Date :</label>
+        <input type="date" name="date" required [(ngModel)]="dateAttendance" placeholder="Attendance Date" />
+        <button class="btn btn-normal btn-md" (click)="fetchAttendance()">Fetch Attendance</button>
+    </div>
+    <div *ngIf="selectedClass.attendanceType == 'Session'">
+        <label for="sessionDate" class="col-md-2">Date :</label>
+        <input type="date" name="sessionDate" required [(ngModel)]="dateAttendance" placeholder="Attendance Date" />
+        <br/>
+        <label for="session" class="col-md-2">Session: </label>
+        <select name="session" [(ngModel)]="session">
+            <option *ngFor="let sess of sessions" value={{sess.value}}>{{sess.type}}</option>
+        </select>
+        <button class="btn btn-normal btn-md" (click)="fetchSessionAttendance()">Fetch Session Attendance</button>
+    </div>
+    <div *ngIf="selectedClass.attendanceType == 'Period'">
+        <label for="periodDate" class="col-md-2">Date :</label>
+        <input type="date" name="periodDate" required [(ngModel)]="dateAttendance" placeholder="Attendance Date" />
+        <br/>
+        <label for="period" class="col-md-2">Period :</label>
+        <select name="period" [(ngModel)]="session">
+            <option *ngFor="let period of periods" value={{period}}>{{period}}</option>
+        </select>
+        <button class="btn btn-normal btn-md" (click)="fetchSessionAttendance()">Fetch Period Attendance</button>
+    </div>
+</form>
+<br>
+<h3>Marked Attendance</h3>
+<br>
+<select [(ngModel)]="noAbsentee">
+    <option *ngFor="let noAbsenteesType of noAbsenteesTypes" [value]="noAbsenteesType.type">{{noAbsenteesType.type}}</option>
+ </select>
+<button *ngIf="markedAttendances?.length == 0" class="btn btn-normal btn-md" (click)="noAbsentees()">No Absentees</button>
+<div class="col-md-8">
+    <table class="table table-bordered table-striped table-sm">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Attendance</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let attendance of markedAttendances">
+                <td>{{attendance.studentName}}</td>
+                <td>{{attendance.typeOfLeave}}</td>
+                <td>
+                    <button type="button" md-button color="accent" (click)="delete(attendance, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<h3>Unmarked Attendance</h3>
+<br>
+<div class="col-md-6">
+    <table class="table table-bordered table-striped">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Attendance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let attendance of unmarkedAttendances">
+                <td>{{attendance.studentName}}</td>
+                <td>
+                    <select [(ngModel)]="attendance.typeOfLeave">
+                        <option *ngFor="let leaveType of leaveTypes" [value]="leaveType.type">{{leaveType.type}}</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="save()">Save</button>
+</div>

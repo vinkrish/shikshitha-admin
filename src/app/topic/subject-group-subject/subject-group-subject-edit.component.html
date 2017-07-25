@@ -1,0 +1,24 @@
+<div *ngIf="subjectGroupSubject">
+    <br>
+    <h3>New Subject-Group Subject</h3>
+    <br/>
+    <form (ngSubmit)="save()" #form="ngForm">
+        <div class="form-group row">
+            <label for="name" class="col-md-2">Subject Group</label>
+            <div class="col-md-4">
+                {{subjectGroupName}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="subject" class="col-md-2">Subject</label>
+            <div class="col-md-4">
+                <select class="form-control" name="subject" required [ngModel]="subjectGroupSubject.subjectId" (ngModelChange)="subjectSelected($event)">
+                    <option *ngFor="let subject of subjects" [ngValue]="subject.id">{{subject.subjectName}}</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
+        <button type="submit" class="btn btn-success btn-md">Save</button>
+    </form>
+    <br/>
+</div>

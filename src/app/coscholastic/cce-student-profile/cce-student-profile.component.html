@@ -1,0 +1,81 @@
+<div>
+    <div class="form-group row">
+        <label for="clas" class="col-md-1">Class :</label>
+        <div class="col-md-4">
+            <select class="form-control" id="clas" name="clas" required [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+                <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="sec" class="col-md-1">Section :</label>
+        <div class="col-md-4">
+            <select class="form-control" id="sec" name="sec" required [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+                <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+            </select>
+        </div>
+    </div>
+    <form (ngSubmit)="getCceProfiles()" #classForm="ngForm">
+        <div class="form-group row">
+            <label for="term" class="col-md-1">Term :</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="term" name="term" required [(ngModel)]="term">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success btn-md">Get Profiles</button>
+    </form>
+    <br/>
+    <div class="form-group row">
+        <label for="totalDays" class="col-md-1">Total Days :</label>
+        <div class="col-md-4">
+            <input type="number" class="form-control" id="totalDays" name="totalDays" required [(ngModel)]="totalDays">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="fromDate" class="col-md-1">From Date :</label>
+        <div class="col-md-4">
+            <input type="date" class="form-control" id="fromDate" name="fromDate" required [(ngModel)]="fromDate">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="toDate" class="col-md-1">To Date :</label>
+        <div class="col-md-4">
+            <input type="date" class="form-control" id="toDate" name="toDate" required [(ngModel)]="toDate">
+        </div>
+    </div>
+    <div>
+        <table class="table table-bordered table-striped table-sm">
+            <caption></caption>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Days Attended</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                    <th>Blood Group</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students; let i = index">
+                    <th scope="row">{{student.rollNo}}</th>
+                    <td>{{student.name}}</td>
+                    <td>
+                        <input type="number" [(ngModel)]="cceProfiles[i].daysAttended" />
+                    </td>
+                    <td>
+                        <input type="number" step=0.01 [(ngModel)]="cceProfiles[i].height" />
+                    </td>
+                    <td>
+                        <input type="number" step=0.01 [(ngModel)]="cceProfiles[i].weight" />
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="cceProfiles[i].bloodGroup" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="error" *ngIf="error">{{error}}</div>
+    <button type="button" class="btn btn-success btn-md" (click)="save()">Save</button>
+</div>

@@ -1,0 +1,50 @@
+<div>
+<form (ngSubmit)="getSchools()" #form="ngForm">
+<div class="form-group row">
+    <label for="admin" class="col-md-2">Super Admin :</label>
+    <input type="password" name="admin" required [(ngModel)]="superAdminPassword" placeholder="password" />
+    <button type="submit" class="btn btn-normal btn-md">Fetch Schools</button>
+</div>
+</form>
+<br>
+<div>
+    <table class="table table-bordered table-striped table-sm">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>No of Students</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let school of schools" (click)="onSelect(school)">
+                <th scope="row">{{school.id}}</th>
+                <td>{{school.schoolName}}</td>
+                <td>{{school.adminUsername}}</td>
+                <td>{{school.adminPassword}}</td>
+                <td>{{school.numberOfStudents}}</td>
+                <td>
+                    <button type="button" md-button color="primary" (click)="gotoEdit(school, $event)">
+                        edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" md-button color="accent" (click)="delete(school, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="add()">Add New </button>
+</div>
+<div *ngIf="addingSchool">
+    <ui-school-detail (close)="close($event)"></ui-school-detail>
+</div>

@@ -1,0 +1,33 @@
+<div *ngIf="subjectTeacher">
+    <form (ngSubmit)="save()" #form="ngForm">
+        <div class="form-group row">
+            <label for="className" class="col-md-2">Class</label>
+            <div class="col-md-4">
+                {{className}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="sectionName" class="col-md-2">Section</label>
+            <div class="col-md-4">
+                {{sectionName}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="subjectName" class="col-md-2">Subject</label>
+            <div class="col-md-4">
+                {{subjectName}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="teacher" class="col-md-2">Teacher</label>
+            <div class="col-md-4">
+                <select class="form-control" name="teacher" required [(ngModel)]="subjectTeacher.teacherId" (change)="teacherSelected($event.target.value)">
+                    <option *ngFor="let teacher of teachers" [value]="teacher.id">{{teacher.name}}</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
+        <button type="submit" class="btn btn-success btn-md">Save</button>
+    </form>
+    <br/>
+</div>

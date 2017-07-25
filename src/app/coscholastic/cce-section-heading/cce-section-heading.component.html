@@ -1,0 +1,41 @@
+<div>
+<div>
+    <label>Select Coscholastic: </label>
+    <select [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
+        <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
+    </select>
+</div>
+<br>
+<div class="col-md-6">
+    <table class="table table-bordered table-striped table-sm">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let sectionHeading of sectionHeadings" (click)="onSelect(sectionHeading)" [class.selected]="sectionHeading === selectedSectionHeading">
+                <td class="col-md-4">{{sectionHeading.name}}</td>
+                <td>
+                    <button type="button" md-button color="primary" (click)="gotoEdit(sectionHeading, $event)">
+                        edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" md-button color="accent" (click)="deleteSectionHeading(sectionHeading, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addSectionHeading()">Add New </button>
+</div>
+<div *ngIf="addingSectionHeading">
+    <ui-cce-section-heading-detail (close)="close($event)"></ui-cce-section-heading-detail>
+</div>

@@ -1,0 +1,36 @@
+<div>
+<div class="row col-md-7">
+    <table class="table table-bordered table-striped table-sm">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Attendance</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let clas of classes" (click)="onSelect(clas)" [class.selected]="clas === selectedClass">
+                <td class="col-md-3">{{clas.className}}</td>
+                <td class="col-md-2">{{clas.attendanceType}}</td>
+                <td>
+                    <button type="button" md-button color="primary" (click)="gotoEdit(clas, $event)">
+                        edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" md-button color="accent" (click)="deleteClass(clas, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addClass()">Add New </button>
+</div>
+<div *ngIf="addingClass">
+    <ui-class-detail (close)="close($event)"></ui-class-detail>
+</div>

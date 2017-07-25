@@ -1,0 +1,69 @@
+<div>
+    <div class="form-group row">
+        <label for="clas" class="col-md-2">Class :</label>
+        <div class="col-md-4">
+            <select class="form-control" id="clas" name="clas" required [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+                <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="sec" class="col-md-2">Section :</label>
+        <div class="col-md-4">
+            <select class="form-control" id="sec" name="sec" required [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+                <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="group" class="col-md-2">Subject Group :</label>
+        <div class="col-md-4">
+            <select class="form-control" id="group" name="group" required [ngModel]="selectedCSG" (ngModelChange)="csgSelected($event)">
+                <option *ngFor="let group of classSubjectGroups" [ngValue]="group">{{group.subjectGroupName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="subject" class="col-md-2">Subject :</label>
+        <div class="col-md-4">
+            <select class="form-control" id="subject" name="subject" [ngModel]="selectedSGS" required (ngModelChange)="sgsSelected($event)">
+                <option *ngFor="let subject of subjectGroupSubjects" [ngValue]="subject">{{subject.subjectName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="sliptest" class="col-md-2">Sliptest :</label>
+        <div class="col-md-4">
+            <select class="form-control" id="sliptest" name="sliptest" [ngModel]="selectedSliptest" required (ngModelChange)="sliptestSelected($event)">
+                <option *ngFor="let st of sliptests" [ngValue]="st">{{st.sliptestName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table table-bordered table-striped table-sm">
+            <caption></caption>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Mark</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sliptestStudent of sliptestStudents; let i = index">
+                    <th scope="row">{{sliptestStudent.rollNo}}</th>
+                    <td>{{sliptestStudent.studentName}}</td>
+                    <td>
+                        <input type="number" [(ngModel)]="marks[i].mark" />
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="marks[i].grade" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="error" *ngIf="error">{{error}}</div>
+    <button type="button" class="btn btn-success btn-md" (click)="save()">Save</button>
+</div>

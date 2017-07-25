@@ -1,0 +1,119 @@
+<ng-sidebar-container class="app" [ngClass]="{'mode-boxed': isBoxed, 'sidebar-opened': isOpened, 'theme-light': theme == 'light', 'theme-dark': theme == 'dark', 'mode-push': _mode == 'push', 'mode-dock': _mode == 'dock', 'mode-over': _mode == 'over', 'mode-slide': _mode == 'slide', 'no-footer': options?.removeFooter, 'map-header': options?.mapHeader}">
+  <ng-sidebar
+    [(opened)]="isOpened"
+    [(mode)]="_mode"
+    [position]="'left'"
+    [dockedSize]="'80px'"
+    [autoCollapseWidth]="'991'"
+    [closeOnClickOutside]="isOver()"
+    [showBackdrop]="isOver()"
+    [sidebarClass]="'sidebar-panel'" #sidebar>
+    <nav class="navbar custom-navbar main-brand">
+      <a class="navbar-brand mr-auto" [routerLink]="['/']">
+        <img src="assets/images/logo.png" class="navbar-brand-logo" alt="">
+        <span class="docked-hidden">&nbsp;Shikshitha</span>
+      </a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="javascript:;" class="nav-link" (click)="toogleSidebar()">
+            <i class="hamburger-icon v2" *ngIf="_mode === 'over' && !isOver()">
+              <span></span>
+            </i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- main navigation -->
+    <nav class="menu">
+      <ul class="navigation" appAccordion>
+        <li class="navigation-item" appAccordionLink *ngFor="let menuitem of menuItems.getAll()" group="{{menuitem.state}}">
+          <a class="navigation-link" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
+            <i class="icon icon-{{ menuitem.icon }}"></i>
+            <span>{{ menuitem.name | translate }}</span>
+            <span class="mr-auto"></span>
+            <span class="badge badge-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+          </a>
+          <a class="navigation-link" appAccordionToggle href="{{menuitem.state}}" *ngIf="menuitem.type === 'extLink'">
+            <i class="icon icon-{{ menuitem.icon }}"></i>
+            <span>{{ menuitem.name | translate }}</span>
+            <span class="mr-auto"></span>
+            <span class="badge badge-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+          </a>
+          <a class="navigation-link" appAccordionToggle href="{{menuitem.state}}" target="_blank" *ngIf="menuitem.type === 'extTabLink'">
+            <i class="icon icon-{{ menuitem.icon }}"></i>
+            <span>{{ menuitem.name | translate }}</span>
+            <span class="mr-auto"></span>
+            <span class="badge badge-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+          </a>
+          <a class="navigation-link" appAccordionToggle href="javascript:;" *ngIf="menuitem.type === 'sub'">
+            <i class="icon icon-{{ menuitem.icon }}"></i>
+            <span>{{ menuitem.name | translate }}</span>
+            <span class="mr-auto"></span>
+            <span class="badge badge-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+            <i class="menu-caret icon icon-arrows-right"></i>
+          </a>
+          <ul class="navigation-submenu" *ngIf="menuitem.type === 'sub'">
+            <li class="navigation-item" *ngFor="let childitem of menuitem.children" routerLinkActive="open">
+              <a [routerLink]="['/', menuitem.state, childitem.state ]" class="navigation-link relative">{{ childitem.name | translate }}</a>
+            </li>
+          </ul>
+        </li>
+        <li class="navigation-item"><hr class="mt-0 mb-0" /></li>
+      </ul>
+    </nav>
+    <!-- /main navigation -->
+  </ng-sidebar>
+
+  <div ng-sidebar-content class="app-inner">
+    <nav class="navbar custom-navbar bg-faded main-header">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="javascript:;" class="nav-link" (click)="toogleSidebar()">
+            <i class="hamburger-icon v2" *ngIf="_mode !== 'dock'">
+              <span></span>
+            </i>
+          </a>
+        </li>
+      </ul>
+      <span class="navbar-heading hidden-xs-down">{{options?.heading}}</span>
+      <span class="mr-auto"></span>
+      <ul class="navbar-nav">
+        <li class="nav-item" ngbDropdown>
+          <a href="javascript:;" class="nav-link" ngbDropdownToggle>
+            <img src="assets/images/avatar.jpg" class="navbar-avatar rounded-circle" alt="user" title="user">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="javascript:;">
+              <i class="icon icon-arrows-switch-vertical mr-3"></i>
+              <span (click)="logout()">Logout</span>
+            </a>
+          </div>
+        </li> 
+        <li class="nav-item">
+          <a href="javascript:;" class="nav-link" appToggleFullscreen>
+            <i class="fi flaticon-fullscreen"></i>
+          </a>
+        </li>              
+      </ul>
+    </nav>
+
+    <div class="main-content">
+      <router-outlet></router-outlet>
+      <nav class="navbar custom-navbar navbar-light main-footer small">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;">
+              <span>Copyright &copy; 2017</span> <span class="ff-headers text-uppercase">Shikshitha</span>. All rights reserved
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav hidden-xs-down">
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;">We Think Different! We Think Innovative</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+</ng-sidebar-container>

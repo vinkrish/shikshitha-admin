@@ -1,0 +1,116 @@
+{
+	"data": [
+    {
+      "attendanceType": "Daily",
+      "className": "VLKG",
+      "homeworkType": "Daily",
+      "id": 1582,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "VUKG",
+      "homeworkType": "Daily",
+      "id": 1583,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "LKG",
+      "homeworkType": "Daily",
+      "id": 1584,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "UKG",
+      "homeworkType": "Daily",
+      "id": 1585,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "I",
+      "homeworkType": "Daily",
+      "id": 1586,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "II",
+      "homeworkType": "Daily",
+      "id": 1587,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "III",
+      "homeworkType": "Daily",
+      "id": 1588,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "IV",
+      "homeworkType": "Daily",
+      "id": 1589,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "V",
+      "homeworkType": "Daily",
+      "id": 1590,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "VI",
+      "homeworkType": "Daily",
+      "id": 1591,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "VII",
+      "homeworkType": "Daily",
+      "id": 1592,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "VIII",
+      "homeworkType": "Daily",
+      "id": 1593,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "IX",
+      "homeworkType": "Daily",
+      "id": 1594,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "X",
+      "homeworkType": "Daily",
+      "id": 1595,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "XI",
+      "homeworkType": "Daily",
+      "id": 1681,
+      "schoold": 107
+    },
+    {
+      "attendanceType": "Daily",
+      "className": "XII",
+      "homeworkType": "Daily",
+      "id": 1682,
+      "schoold": 107
+    }
+  ]
+}

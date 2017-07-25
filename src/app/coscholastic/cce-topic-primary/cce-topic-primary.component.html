@@ -1,0 +1,50 @@
+<div>
+<form #topicPrimaryForm="ngForm">
+<div>
+    <label class="col-md-2">Coscholastic: </label>
+    <select name="coschName" [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
+        <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
+    </select>
+</div>
+<br/>
+<div>
+    <label class="col-md-2">Section Heading: </label>
+    <select name="secHeadName" [ngModel]="selectedSectionHeading" (ngModelChange)="sectionHeadingSelected($event)">
+        <option *ngFor="let secHead of sectionHeadings" [ngValue]="secHead">{{secHead.name}}</option>
+    </select>
+</div>
+</form>
+<br>
+<div class="col-md-6">
+    <table class="table table-bordered table-striped table-sm">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let topicPrimary of topicPrimarys" (click)="onSelect(topicPrimary)" [class.selected]="topicPrimary === selectedTopicPrimary">
+                <td class="col-md-4">{{topicPrimary.name}}</td>
+                <td>
+                    <button type="button" md-button color="primary" (click)="gotoEdit(topicPrimary, $event)">
+                        edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" md-button color="accent" (click)="deleteTopicPrimary(topicPrimary, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addTopicPrimary()">Add New </button>
+</div>
+<div *ngIf="addingTopicPrimary">
+    <ui-cce-topic-primary-detail (close)="close($event)"></ui-cce-topic-primary-detail>
+</div>

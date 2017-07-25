@@ -1,0 +1,46 @@
+{
+	"data" : [
+	  {
+	    "classId": 1586,
+	    "id": 49,
+	    "subjectGroupId": 525,
+	    "subjectGroupName": "ENGLISH"
+	  },
+	  {
+	    "classId": 1586,
+	    "id": 50,
+	    "subjectGroupId": 526,
+	    "subjectGroupName": "2nd LANGUAGE"
+	  },
+	  {
+	    "classId": 1586,
+	    "id": 51,
+	    "subjectGroupId": 527,
+	    "subjectGroupName": "MATHEMATICS"
+	  },
+	  {
+	    "classId": 1586,
+	    "id": 52,
+	    "subjectGroupId": 528,
+	    "subjectGroupName": "ENVIRONMENTAL SCIENCE"
+	  },
+	  {
+	    "classId": 1586,
+	    "id": 53,
+	    "subjectGroupId": 529,
+	    "subjectGroupName": "COMPUTER SCIENCE"
+	  },
+	  {
+	    "classId": 1586,
+	    "id": 54,
+	    "subjectGroupId": 530,
+	    "subjectGroupName": "GENERAL KNOWLEDGE"
+	  },
+	  {
+	    "classId": 1586,
+	    "id": 55,
+	    "subjectGroupId": 1075,
+	    "subjectGroupName": "03 LANG 3"
+	  }
+	]
+}

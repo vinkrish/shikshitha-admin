@@ -1,0 +1,66 @@
+<div>
+<div class="form-group row">
+    <label for="clas" class="col-md-2">Class :</label>
+    <div class="col-md-4">
+        <select class="form-control" id="clas" name="clas" required [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+            <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+        </select>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="sec" class="col-md-2">Section :</label>
+    <div class="col-md-4">
+        <select class="form-control" id="sec" name="sec" required [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+            <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+        </select>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="group" class="col-md-2">Subject Group :</label>
+    <div class="col-md-4">
+        <select class="form-control" id="group" name="group" required [ngModel]="selectedCSG" (ngModelChange)="csgSelected($event)">
+            <option *ngFor="let group of classSubjectGroups" [ngValue]="group">{{group.subjectGroupName}}</option>
+        </select>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="subject" class="col-md-2">Subject :</label>
+    <div class="col-md-4">
+        <select class="form-control" id="subject" name="subject" [ngModel]="selectedSGS" required (ngModelChange)="sgsSelected($event)">
+            <option *ngFor="let subject of subjectGroupSubjects" [ngValue]="subject">{{subject.subjectName}}</option>
+        </select>
+    </div>
+</div>
+<div *ngIf="selectedSGS" class="col-md-6">
+    <table class="table table-bordered table-striped table-sm">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let slip of sliptests" (click)="onSelect(slip)" [class.selected]="slip === selectedPortion">
+                <td class="col-md-4">{{slip.sliptestName}}</td>
+                <td>
+                    <button type="button" md-button color="primary" (click)="gotoEdit(slip, $event)">
+                        edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" md-button color="accent" (click)="deletePortion(slip, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addSliptest()">Add New</button>
+</div>
+<div *ngIf="addingSliptest">
+    <ui-sliptest-detail (close)="close($event)"></ui-sliptest-detail>
+</div>

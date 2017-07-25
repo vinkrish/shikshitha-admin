@@ -1,0 +1,47 @@
+<div>
+<form>
+<div>
+    <label class="col-md-2">Select Class: </label>
+    <select name="className" [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+        <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+    </select>
+    <button *ngIf="addingSubjectTeacher" type="button" class="btn btn-warning btn-md" (click)="setupSubjectTeacher()">Setup Subject-Teacher</button>
+</div>
+<br/>
+<div>
+    <label class="col-md-2">Select Section: </label>
+    <select name="secName" [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+        <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+    </select>
+</div>
+</form>
+<div class="col-md-8">
+    <table class="table table-bordered table-striped table-sm">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Teacher</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let subjectTeacher of subjectTeachers" (click)="onSelect(subjectTeacher)" [class.selected]="subjectTeacher === selectedSubjectTeacher">
+                <td>{{subjectTeacher.subjectName}}</td>
+                <td>{{subjectTeacher.teacherName}}</td>
+                <td>
+                    <button type="button" md-button color="primary" (click)="gotoEdit(subjectTeacher, $event)">
+                        edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" md-button color="accent" (click)="deleteSubjectTeacher(subjectTeacher, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>

@@ -1,0 +1,55 @@
+<div>
+<div>
+    <label>Select Class: </label>
+    <select [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+        <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+    </select>
+</div>
+<br/>
+<div>
+    <label>Select Section: </label>
+    <select [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+        <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+    </select>
+</div>
+<div>
+    <table class="table table-bordered table-striped table-sm">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Father's Name</th>
+                <th>Mother's Name</th>
+                <th>Mobile</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students" (click)="onSelect(student)" [class.selected]="student === selectedStudent">
+                <th scope="row">{{student.rollNo}}</th>
+                <td>{{student.name}}</td>
+                <td>{{student.fatherName}}</td>
+                <td>{{student.motherName}}</td>
+                <td>{{student.mobile1}}</td>
+                <td>
+                    <button type="button" md-button color="primary" (click)="gotoEdit(student, $event)">
+                        edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" md-button color="accent" (click)="deleteStudent(student, $event)">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addStudent()">Add New </button>
+</div>
+<div *ngIf="addingStudent">
+    <ui-student-detail (close)="close($event)"></ui-student-detail>
+</div>
