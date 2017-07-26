@@ -150,7 +150,9 @@ export class SubjectStudentComponent implements OnInit {
   }
 
   clearValues() {
+    this.sections = [];
     this.selectedSection = new Section();
+    this.clasSubjectGroups = [];
     this.selectedCSG = new ClassSubjectGroup();
     this.subjectStudents = [];
     this.ssList = [];

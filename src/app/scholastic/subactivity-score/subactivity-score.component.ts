@@ -251,6 +251,7 @@ export class SubActivityScoreComponent implements OnInit {
   }
 
   clearValues() {
+    this.sections = [];
     this.selectedSection = new Section();
     this.selectedExam = new Exam();
     this.selectedExamSubject = new ExamSubject();

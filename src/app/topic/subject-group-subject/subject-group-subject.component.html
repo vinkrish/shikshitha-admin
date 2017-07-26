@@ -11,25 +11,27 @@
   </div>
 </div>
 <div class="card">
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let sgs of subjectGroupSubjects" (click)="onSelect(sgs)" [class.selected]="sgs === selectedSGS">
-          <td class="col-md-1">{{sgs.subjectName}}</td>
-          <td>
-            <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteSubjectGroupSubject(sgs, $event)">
-              delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="card-block">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sgs of subjectGroupSubjects" (click)="onSelect(sgs)" [class.selected]="sgs === selectedSGS">
+            <td class="col-md-1">{{sgs.subjectName}}</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteSubjectGroupSubject(sgs, $event)">
+                delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 <div class="error" *ngIf="error">{{error}}</div>

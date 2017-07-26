@@ -57,10 +57,11 @@ export class ActivityComponent implements OnInit {
     }
 
   classSelected(selectedClass) {
+    this.sections = [];
+    this.selectedSection = new Section();
     this.examSubjects = null;
     this.selectedClass = selectedClass;
     this.activities = null;
-    this.selectedSection = new Section();
     this.selectedExam = new Exam();
     this.selectedExamSubject = new ExamSubject();
     this.getSections(this.selectedClass.id);

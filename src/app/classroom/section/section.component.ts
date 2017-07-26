@@ -40,6 +40,8 @@ export class SectionComponent implements OnInit {
     }
 
   classSelected(selectedClass) {
+    this.selectedSection = new Section();
+    this.sections = [];
     this.selectedClass = selectedClass;
     this.getSections(this.selectedClass.id);
     this._cookieService.put("classId", "" + this.selectedClass.id);

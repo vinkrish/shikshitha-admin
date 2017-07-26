@@ -63,6 +63,7 @@ export class AspectGradeComponent implements OnInit {
   }
 
   clearValues() {
+    this.sections = [];
     this.selectedSection = new Section();
     this.students = [];
     this.grades = [];

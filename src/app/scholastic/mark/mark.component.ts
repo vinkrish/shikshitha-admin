@@ -201,7 +201,8 @@ export class MarkComponent implements OnInit {
   }
 
   clearValues() {
-    this.selectedSection = new Section(0, "");
+    this.sections = [];
+    this.selectedSection = new Section();
     this.selectedExam = new Exam();
     this.selectedExamSubject = new ExamSubject();
     this.exams = [];

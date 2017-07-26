@@ -56,6 +56,8 @@ export class SliptestComponent implements OnInit {
     }
 
   classSelected(selectedClass) {
+    this.sections = [];
+    this.selectedSection = new Section();
     this.selectedClass = selectedClass;
     this.clearValues();
     this.getSections(this.selectedClass.id);

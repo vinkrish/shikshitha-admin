@@ -88,7 +88,7 @@
       New Activity
     </div>
     <div class="card-block">
-      <form (ngSubmit)="save()" #form="ngForm">
+      <form (ngSubmit)="save()" #form="ngForm" ngNativeValidate>
         <div class="form-group row">
           <label for="className" class="col-md-1">Class:</label>
           <div class="col-md-4">

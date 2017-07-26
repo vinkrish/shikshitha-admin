@@ -47,6 +47,8 @@ export class StudentComponent implements OnInit {
     }
 
   classSelected(selectedClass) {
+    this.selectedSection = new Section(0, "");
+    this.sections = [];
     this.selectedClass = selectedClass;
     this.getSections(this.selectedClass.id);
     this.cookieService.put("classId", "" + this.selectedClass.id);

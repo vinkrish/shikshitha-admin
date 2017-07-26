@@ -69,8 +69,10 @@ export class AttendanceComponent implements OnInit {
 
   classSelected(selectedClass) {
   	this.selectedClass = selectedClass;
+  	this.sections = [];
 	this.timetables = [];
 	this.periods = [];
+	this.selectedSection = new Section();
 	this.getSections(this.selectedClass.id);
 	this.cookieService.put("classId", "" + this.selectedClass.id);
 	this.cookieService.put("className", this.selectedClass.className);

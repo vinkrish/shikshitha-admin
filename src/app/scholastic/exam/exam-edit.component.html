@@ -1,6 +1,6 @@
 <div *ngIf="exam" class="card">
   <div class="card-block">
-    <form (ngSubmit)="save()" #form="ngForm">
+    <form (ngSubmit)="save()" #form="ngForm" ngNativeValidate>
       <div class="form-group row">
         <label for="name" class="col-md-1">Name</label>
         <div class="col-md-4">

@@ -57,6 +57,8 @@ export class TimetableComponent {
 
   classSelected(selectedClass) {
 	this.selectedClass = selectedClass;
+	this.sections = [];
+	this.selectedSection = new Section();
 	this.isNewTimetable = false;
 	this.getSections(this.selectedClass.id);
 	this.getSubjects(this.selectedClass.id);
