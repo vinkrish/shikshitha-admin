@@ -1,53 +1,57 @@
-<div class="form-group row">
-  <label for="clas" class="col-md-1">Class :</label>
-  <div class="col-md-4">
-    <select class="form-control" name="clas" required [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
-      <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
-    </select>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="sec" class="col-md-1">Section :</label>
-  <div class="col-md-4">
-    <select class="form-control" name="sec" required [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
-      <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
-    </select>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="exam" class="col-md-1">Exam :</label>
-  <div class="col-md-4">
-    <select class="form-control" name="exam" required [ngModel]="selectedExam" (ngModelChange)="examSelected($event)">
-      <option *ngFor="let exam of exams" [ngValue]="exam">{{exam.examName}}</option>
-    </select>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="examsubject" class="col-md-1">Subject :</label>
-  <div class="col-md-4">
-    <select class="form-control" name="examsubject" [ngModel]="selectedExamSubject" required (ngModelChange)="examSubjectSelected($event)">
-      <option *ngFor="let es of examSubjects" [ngValue]="es">{{es.subjectName}}</option>
-    </select>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="activity" class="col-md-1">Activity :</label>
-  <div class="col-md-4">
-    <select class="form-control" name="activity" [ngModel]="selectedActivity" required (ngModelChange)="activitySelected($event)">
-      <option *ngFor="let act of activities" [ngValue]="act">{{act.activityName}}</option>
-    </select>
-  </div>
-</div>
-<div class="form-group row">
-  <label for="subactivity" class="col-md-1">Sub Activity:</label>
-  <div class="col-md-4">
-    <select class="form-control" name="subactivity" [ngModel]="selectedSubActivity" required (ngModelChange)="subActivitySelected($event)">
-      <option *ngFor="let subact of subActivities" [ngValue]="subact">{{subact.subActivityName}}</option>
-    </select>
+<div class="card">
+  <div class="card-block">
+    <div class="form-group row">
+      <label for="clas" class="col-md-1">Class :</label>
+      <div class="col-md-4">
+        <select class="form-control" name="clas" required [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+          <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="sec" class="col-md-1">Section :</label>
+      <div class="col-md-4">
+        <select class="form-control" name="sec" required [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+          <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="exam" class="col-md-1">Exam :</label>
+      <div class="col-md-4">
+        <select class="form-control" name="exam" required [ngModel]="selectedExam" (ngModelChange)="examSelected($event)">
+          <option *ngFor="let exam of exams" [ngValue]="exam">{{exam.examName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="examsubject" class="col-md-1">Subject :</label>
+      <div class="col-md-4">
+        <select class="form-control" name="examsubject" [ngModel]="selectedExamSubject" required (ngModelChange)="examSubjectSelected($event)">
+          <option *ngFor="let es of examSubjects" [ngValue]="es">{{es.subjectName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="activity" class="col-md-1">Activity :</label>
+      <div class="col-md-4">
+        <select class="form-control" name="activity" [ngModel]="selectedActivity" required (ngModelChange)="activitySelected($event)">
+          <option *ngFor="let act of activities" [ngValue]="act">{{act.activityName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="subactivity" class="col-md-1">Sub Activity:</label>
+      <div class="col-md-4">
+        <select class="form-control" name="subactivity" [ngModel]="selectedSubActivity" required (ngModelChange)="subActivitySelected($event)">
+          <option *ngFor="let subact of subActivities" [ngValue]="subact">{{subact.subActivityName}}</option>
+        </select>
+      </div>
+    </div>
   </div>
 </div>
 <div class="card">
-  <div class="col-md-8">
+  <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>

@@ -1,95 +1,102 @@
-<div class="form-group row">
-  <label for="clas" class="col-md-1">Class :</label>
-  <div class="col-md-3">
-    <select class="form-control" id="clas" name="clas" required [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
-      <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
-    </select>
+<div class="card">
+  <div class="card-block">
+    <div class="form-group row">
+      <label for="clas" class="col-md-1">Class :</label>
+      <div class="col-md-3">
+        <select class="form-control" id="clas" name="clas" required [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+          <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+        </select>
+      </div>
+    </div>
   </div>
 </div>
 <div class="card">
-  <div class="col-responsive">
-    <table class="table table-striped">
-      <caption></caption>
-      <thead>
-        <tr>
-          <th>Grade</th>
-          <th>Mark From</th>
-          <th>Mark To</th>
-          <th>GradePoint</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let gcw of gradesClassWise" (click)="onSelect(gcw)" [class.selected]="gcw === selectedGCW">
-          <td>
-            <input [(ngModel)]="gcw.grade" />
-          </td>
-          <td>
-            <input [(ngModel)]="gcw.markFrom" />
-          </td>
-          <td>
-            <input [(ngModel)]="gcw.markTo" />
-          </td>
-          <td>
-            <input [(ngModel)]="gcw.gradePoint" placeholder="%" />
-          </td>
-          <td>
-            <button type="button" md-button color="primary" (click)="update(gcw, $event)">
-              update
-            </button>
-          </td>
-          <td>
-            <button type="button" md-button color="accent" (click)="delete(gcw, $event)">
-              delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="card-block">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <caption></caption>
+        <thead>
+          <tr>
+            <th>Grade</th>
+            <th>Mark From</th>
+            <th>Mark To</th>
+            <th>GradePoint</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let gcw of gradesClassWise" (click)="onSelect(gcw)" [class.selected]="gcw === selectedGCW">
+            <td>
+              <input [(ngModel)]="gcw.grade" />
+            </td>
+            <td>
+              <input [(ngModel)]="gcw.markFrom" />
+            </td>
+            <td>
+              <input [(ngModel)]="gcw.markTo" />
+            </td>
+            <td>
+              <input [(ngModel)]="gcw.gradePoint" placeholder="%" />
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-primary btn-sm" (click)="update(gcw, $event)">
+                update
+              </button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-danger btn-sm" (click)="delete(gcw, $event)">
+                delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="add()">Add </button>
-<div *ngIf="addingGCW">
+<div *ngIf="addingGCW" class="card">
   <div *ngIf="gradeClassWise">
-    <br>
-    <h3>Grade Class Wise Details</h3>
-    <br/>
-    <form (ngSubmit)="save()" #form="ngForm">
-      <div class="form-group row">
-        <label for="className" class="col-md-2">Class :</label>
-        <div class="col-md-4">
-          {{selectedClass.className}}
+    <div class="card-header">
+      New Grade Class Wise Details
+    </div>
+    <div class="card-block">
+      <form (ngSubmit)="save()" #form="ngForm">
+        <div class="form-group row">
+          <label for="className" class="col-md-2">Class :</label>
+          <div class="col-md-4">
+            {{selectedClass.className}}
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="grade" class="col-md-2">Grade :</label>
-        <div class="col-md-4">
-          <input type="text" class="form-control" name="grade" required [(ngModel)]="gradeClassWise.grade">
+        <div class="form-group row">
+          <label for="grade" class="col-md-2">Grade :</label>
+          <div class="col-md-4">
+            <input type="text" class="form-control" name="grade" required [(ngModel)]="gradeClassWise.grade">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="markFrom" class="col-md-2">Mark From :</label>
-        <div class="col-md-4">
-          <input type="number" class="form-control" name="markFrom" required [(ngModel)]="gradeClassWise.markFrom">
+        <div class="form-group row">
+          <label for="markFrom" class="col-md-2">Mark From :</label>
+          <div class="col-md-4">
+            <input type="number" class="form-control" name="markFrom" required [(ngModel)]="gradeClassWise.markFrom">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="markTo" class="col-md-2">Mark To :</label>
-        <div class="col-md-4">
-          <input type="number" class="form-control" name="markTo" required [(ngModel)]="gradeClassWise.markTo">
+        <div class="form-group row">
+          <label for="markTo" class="col-md-2">Mark To :</label>
+          <div class="col-md-4">
+            <input type="number" class="form-control" name="markTo" required [(ngModel)]="gradeClassWise.markTo">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="point" class="col-md-2">Grade Point :</label>
-        <div class="col-md-4">
-          <input type="number" class="form-control" name="point" required [(ngModel)]="gradeClassWise.gradePoint">
+        <div class="form-group row">
+          <label for="point" class="col-md-2">Grade Point :</label>
+          <div class="col-md-4">
+            <input type="number" class="form-control" name="point" required [(ngModel)]="gradeClassWise.gradePoint">
+          </div>
         </div>
-      </div>
-      <button type="button" class="btn btn-normal btn-md" (click)="close()">Back</button>
-      <button type="submit" class="btn btn-success btn-md">Save</button>
-    </form>
-    <br/>
+        <button type="button" class="btn btn-normal btn-md" (click)="close()">Back</button>
+        <button type="submit" class="btn btn-success btn-md">Save</button>
+      </form>
+    </div>
   </div>
 </div>

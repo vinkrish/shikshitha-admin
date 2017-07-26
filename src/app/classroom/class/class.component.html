@@ -1,43 +1,41 @@
-<div>
-  <div class="card">
-    <div class="card-header">
-      Manage Data
-    </div>
-    <div class="card-block">
-      <p>Careful with <code>delete</code> option</p>
-      <div class="col-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Attendance</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let clas of classes" (click)="onSelect(clas)" [class.selected]="clas === selectedClass">
-              <td>{{clas.className}}</td>
-              <td>{{clas.attendanceType}}</td>
-              <td>
-                <button type="button" class="btn btn-outline-primary btn-sm" (click)="gotoEdit(clas, $event)">
-                  edit
-                </button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteClass(clas, $event)">
-                  delete
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<div class="card">
+  <div class="card-header">
+    Manage Data
+  </div>
+  <div class="card-block">
+    <p>Careful with <code>delete</code> option</p>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Attendance</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let clas of classes" (click)="onSelect(clas)" [class.selected]="clas === selectedClass">
+            <td class="col-md-1">{{clas.className}}</td>
+            <td>{{clas.attendanceType}}</td>
+            <td>
+              <button type="button" class="btn btn-outline-primary btn-sm" (click)="gotoEdit(clas, $event)">
+                edit
+              </button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteClass(clas, $event)">
+                delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  <div class="error" *ngIf="error">{{error}}</div>
-  <button type="button" class="btn btn-success btn-md" (click)="addClass()">Add New </button>
 </div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addClass()">Add New </button>
 <div *ngIf="addingClass">
   <ui-class-detail (close)="close($event)"></ui-class-detail>
 </div>

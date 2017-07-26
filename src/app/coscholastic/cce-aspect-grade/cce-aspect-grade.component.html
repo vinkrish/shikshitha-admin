@@ -1,63 +1,66 @@
-<form (ngSubmit)="getGrades()" #form="ngForm">
-  <div class="form-group row">
-    <label for="clas" class="col-md-2">Class :</label>
-    <div class="col-md-4">
-      <select class="form-control" id="clas" name="clas" required [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
-        <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="sec" class="col-md-2">Section :</label>
-    <div class="col-md-4">
-      <select class="form-control" id="sec" name="sec" required [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
-        <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-md-2">Coscholastic: </label>
-    <div class="col-md-4">
-      <select class="form-control" name="coschName" required [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
-        <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-md-2">Section Heading: </label>
-    <div class="col-md-4">
-      <select class="form-control" name="secHeadName" required [ngModel]="selectedSectionHeading" (ngModelChange)="sectionHeadingSelected($event)">
-        <option *ngFor="let secHead of sectionHeadings" [ngValue]="secHead">{{secHead.name}}</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="topicName" class="col-md-2">Topic: </label>
-    <div class="col-md-4">
-      <select class="form-control" name="topicName" name="topicName" required [ngModel]="selectedTopicPrimary" (ngModelChange)="topicSelected($event)">
-        <option *ngFor="let topic of topicPrimarys" [ngValue]="topic">{{topic.name}}</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="aspectName" class="col-md-2">Aspect: </label>
-    <div class="col-md-4">
-      <select class="form-control" name="aspectName" name="aspectName" required [ngModel]="selectedAspect" (ngModelChange)="aspectSelected($event)">
-        <option *ngFor="let aspect of aspects" [ngValue]="aspect">{{aspect.name}}</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="term" class="col-md-2">Term: </label>
-    <div class="col-md-4">
-      <input class="form-control" name="term" type="number" required [(ngModel)]="term" />
-    </div>
-  </div>
-  <button type="submit" class="btn btn-outline-primary btn-sm">Fetch Aspect Grade</button>
-</form>
-<br>
 <div class="card">
-  <div class="col-md-10">
+  <div class="card-block">
+    <form (ngSubmit)="getGrades()" #form="ngForm">
+      <div class="form-group row">
+        <label for="clas" class="col-md-2">Class :</label>
+        <div class="col-md-4">
+          <select class="form-control" id="clas" name="clas" required [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+            <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="sec" class="col-md-2">Section :</label>
+        <div class="col-md-4">
+          <select class="form-control" id="sec" name="sec" required [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+            <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Coscholastic: </label>
+        <div class="col-md-4">
+          <select class="form-control" name="coschName" required [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
+            <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Section Heading: </label>
+        <div class="col-md-4">
+          <select class="form-control" name="secHeadName" required [ngModel]="selectedSectionHeading" (ngModelChange)="sectionHeadingSelected($event)">
+            <option *ngFor="let secHead of sectionHeadings" [ngValue]="secHead">{{secHead.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="topicName" class="col-md-2">Topic: </label>
+        <div class="col-md-4">
+          <select class="form-control" name="topicName" name="topicName" required [ngModel]="selectedTopicPrimary" (ngModelChange)="topicSelected($event)">
+            <option *ngFor="let topic of topicPrimarys" [ngValue]="topic">{{topic.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="aspectName" class="col-md-2">Aspect: </label>
+        <div class="col-md-4">
+          <select class="form-control" name="aspectName" name="aspectName" required [ngModel]="selectedAspect" (ngModelChange)="aspectSelected($event)">
+            <option *ngFor="let aspect of aspects" [ngValue]="aspect">{{aspect.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="term" class="col-md-2">Term: </label>
+        <div class="col-md-4">
+          <input class="form-control" name="term" type="number" required [(ngModel)]="term" />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-outline-primary btn-sm">Fetch Aspect Grade</button>
+    </form>
+  </div>
+</div>
+<div class="card">
+  <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>

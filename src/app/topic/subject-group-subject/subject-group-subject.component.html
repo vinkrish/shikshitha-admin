@@ -1,11 +1,17 @@
-<div class="form-group row">
-  <label for="className" class="col-md-2">Subject Group: </label>
-  <select [ngModel]="selectedSubjectGroup" (ngModelChange)="subjectGroupSelected($event)">
-    <option *ngFor="let subjectGroup of subjectGroups" [ngValue]="subjectGroup">{{subjectGroup.subjectGroupName}}</option>
-  </select>
+<div class="card">
+  <div class="card-block">
+    <div class="form-group row">
+      <label class="col-md-2">Subject Group: </label>
+      <div class="col-md-4">
+        <select class="form-control" [ngModel]="selectedSubjectGroup" (ngModelChange)="subjectGroupSelected($event)">
+          <option *ngFor="let subjectGroup of subjectGroups" [ngValue]="subjectGroup">{{subjectGroup.subjectGroupName}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="card">
-  <div class="col-md-6">
+  <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -15,7 +21,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let sgs of subjectGroupSubjects" (click)="onSelect(sgs)" [class.selected]="sgs === selectedSGS">
-          <td class="col-md-4">{{sgs.subjectName}}</td>
+          <td class="col-md-1">{{sgs.subjectName}}</td>
           <td>
             <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteSubjectGroupSubject(sgs, $event)">
               delete

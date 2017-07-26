@@ -1,19 +1,27 @@
-<form #topicPrimaryForm="ngForm">
-  <div class="form-group row">
-    <label class="col-md-2">Coscholastic: </label>
-    <select class="col-md-4" name="coschName" [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
-      <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
-    </select>
-  </div>
-  <div class="form-group row">
-    <label class="col-md-2">Section Heading: </label>
-    <select class="col-md-4" name="secHeadName" [ngModel]="selectedSectionHeading" (ngModelChange)="sectionHeadingSelected($event)">
-      <option *ngFor="let secHead of sectionHeadings" [ngValue]="secHead">{{secHead.name}}</option>
-    </select>
-  </div>
-</form>
 <div class="card">
-  <div class="col-md-6">
+  <div class="card-block">
+    <form #topicPrimaryForm="ngForm">
+      <div class="form-group row">
+        <label class="col-md-2">Coscholastic: </label>
+        <div class="col-md-4">
+          <select class="form-control" name="coschName" [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
+            <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Section Heading: </label>
+        <div class="col-md-4">
+          <select class="form-control" name="secHeadName" [ngModel]="selectedSectionHeading" (ngModelChange)="sectionHeadingSelected($event)">
+            <option *ngFor="let secHead of sectionHeadings" [ngValue]="secHead">{{secHead.name}}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="card">
+  <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -24,7 +32,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let topicPrimary of topicPrimarys" (click)="onSelect(topicPrimary)" [class.selected]="topicPrimary === selectedTopicPrimary">
-          <td class="col-md-3">{{topicPrimary.name}}</td>
+          <td>{{topicPrimary.name}}</td>
           <td>
             <button type="button" class="btn btn-outline-primary btn-sm" (click)="gotoEdit(topicPrimary, $event)">
               edit

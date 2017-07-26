@@ -1,24 +1,25 @@
-<div *ngIf="cceCoschClass">
-    <br>
-    <h3>New CCE Coscholastic Class</h3>
-    <br/>
+<div *ngIf="cceCoschClass" class="card">
+  <div class="card-header">
+    New CCE Coscholastic Class
+  </div>
+  <div class="card-block">
     <form (ngSubmit)="save()" #form="ngForm">
-        <div class="form-group row">
-            <label for="name" class="col-md-2">Co Scholastic :</label>
-            <div class="col-md-4">
-                {{coScholasticName}}
-            </div>
+      <div class="form-group row">
+        <label for="name" class="col-md-2">Co Scholastic :</label>
+        <div class="col-md-4">
+          {{coScholasticName}}
         </div>
-        <div class="form-group row">
-            <label for="classs" class="col-md-2">Class :</label>
-            <div class="col-md-4">
-                <select class="form-control" id="classs" name="classs" required [(ngModel)]="cceCoschClass.classId" (ngModelChange)="classSelected($event)">
-                    <option *ngFor="let classs of classes" [ngValue]="classs.id">{{classs.className}}</option>
-                </select>
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="classs" class="col-md-2">Class :</label>
+        <div class="col-md-4">
+          <select class="form-control" id="classs" name="classs" required [(ngModel)]="cceCoschClass.classId" (ngModelChange)="classSelected($event)">
+            <option *ngFor="let classs of classes" [ngValue]="classs.id">{{classs.className}}</option>
+          </select>
         </div>
-        <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
-        <button type="submit" class="btn btn-success btn-md">Save</button>
+      </div>
+      <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
+      <button type="submit" class="btn btn-success btn-md">Save</button>
     </form>
-    <br/>
+  </div>
 </div>

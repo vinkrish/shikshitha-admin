@@ -1,26 +1,31 @@
-<form>
-  <div class="form-group row">
-    <label class="col-md-2">Select Class: </label>
-    <select class="col-md-4" name="className" [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
-      <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
-    </select>
-  </div>
-  <div class="form-group row">
-    <label class="col-md-2">Select Section: </label>
-    <select class="col-md-4" name="secName" [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
-      <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
-    </select>
-  </div>
-  <div class="form-group row">
-    <label class="col-md-2">Select Day: </label>
-    <select class="col-md-4" name="dayName" [ngModel]="selectedDay" (ngModelChange)="daySelected($event)">
-      <option *ngFor="let day of days" [ngValue]="day">{{day}}</option>
-    </select>
-  </div>
-</form>
 <div class="card">
-  <div class="col-responsive">
-    <table class="table table-bordered table-striped">
+  <div class="card-block">
+    <form>
+      <div class="form-group row">
+        <label class="col-md-2">Select Class: </label>
+        <select class="col-md-4" name="className" [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+          <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+        </select>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Select Section: </label>
+        <select class="col-md-4" name="secName" [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+          <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+        </select>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Select Day: </label>
+        <select class="col-md-4" name="dayName" [ngModel]="selectedDay" (ngModelChange)="daySelected($event)">
+          <option *ngFor="let day of days" [ngValue]="day">{{day}}</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="card">
+<div class="card-block">
+  <div class="table-responsive">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Period</th>
@@ -60,12 +65,14 @@
     </table>
   </div>
 </div>
+</div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="add()">Add</button>
-<div *ngIf="isNewTimetable">
-  <br>
-  <h3>New Timetable Details</h3>
-  <br/>
+<div *ngIf="isNewTimetable" class="card">
+  <div class="card-header">
+    New Timetable Details
+  </div>
+  <div class="card-block">
   <form (ngSubmit)="insert()" #form="ngForm">
     <div class="form-group row">
       <label for="period" class="col-md-2">Period</label>
@@ -96,5 +103,5 @@
     <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
     <button type="submit" class="btn btn-success btn-md">Save</button>
   </form>
-  <br/>
+</div>
 </div>

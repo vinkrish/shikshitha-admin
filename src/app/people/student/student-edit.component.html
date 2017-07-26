@@ -1,117 +1,118 @@
 <div *ngIf="student" class="card">
+  <div class="card-block">
     <form (ngSubmit)="save()" #form="ngForm">
-        <div class="form-group row">
-            <label for="className" class="col-md-2">Class</label>
-            <div class="col-md-4">
-                {{className}}
-            </div>
+      <div class="form-group row">
+        <label for="className" class="col-md-2">Class</label>
+        <div class="col-md-4">
+          {{className}}
         </div>
-        <div class="form-group row">
-            <label for="sectionName" class="col-md-2">Section</label>
-            <div class="col-md-4">
-                {{sectionName}}
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="sectionName" class="col-md-2">Section</label>
+        <div class="col-md-4">
+          {{sectionName}}
         </div>
-        <div class="form-group row">
-            <label for="rollNo" class="col-md-2">Roll No</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="rollNo" required [(ngModel)]="student.rollNo">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="rollNo" class="col-md-2">Roll No</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="rollNo" required [(ngModel)]="student.rollNo">
         </div>
-        <div class="form-group row">
-            <label for="name" class="col-md-2">Name</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="name" required [(ngModel)]="student.name">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="name" class="col-md-2">Name</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="name" required [(ngModel)]="student.name">
         </div>
-        <div class="form-group row">
-            <label for="admissionNo" class="col-md-2">Admission No</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="admissionNo" required [(ngModel)]="student.admissionNo">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="admissionNo" class="col-md-2">Admission No</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="admissionNo" required [(ngModel)]="student.admissionNo">
         </div>
-        <div class="form-group row">
-            <label for="username" class="col-md-2">Username</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="username" required [(ngModel)]="student.username">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="username" class="col-md-2">Username</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="username" required [(ngModel)]="student.username">
         </div>
-        <div class="form-group row">
-            <label for="father" class="col-md-2">Father Name</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="father" required [(ngModel)]="student.fatherName">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="father" class="col-md-2">Father Name</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="father" required [(ngModel)]="student.fatherName">
         </div>
-        <div class="form-group row">
-            <label for="mother" class="col-md-2">Mother Name</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="mother" required [(ngModel)]="student.motherName">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="mother" class="col-md-2">Mother Name</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="mother" required [(ngModel)]="student.motherName">
         </div>
-        <div class="form-group row">
-            <label for="dob" class="col-md-2">Date Of Birth</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="dob" required [(ngModel)]="student.dateOfBirth">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="dob" class="col-md-2">Date Of Birth</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="dob" required [(ngModel)]="student.dateOfBirth">
         </div>
-        <div class="form-group row">
-            <label for="type" class="col-md-2">Gender</label>
-            <div class="col-md-4">
-                <select class="form-control" id="type" name="type" required [(ngModel)]="student.gender">
-                    <option *ngFor="let sex of genders" [ngValue]="sex.type">{{sex.type}}</option>
-                </select>
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="type" class="col-md-2">Gender</label>
+        <div class="col-md-4">
+          <select class="form-control" id="type" name="type" required [(ngModel)]="student.gender">
+            <option *ngFor="let sex of genders" [ngValue]="sex.type">{{sex.type}}</option>
+          </select>
         </div>
-        <div class="form-group row">
-            <label for="email" class="col-md-2">Email</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="email" required [(ngModel)]="student.email">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="email" class="col-md-2">Email</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="email" required [(ngModel)]="student.email">
         </div>
-        <div class="form-group row">
-            <label for="mobile1" class="col-md-2">Mobile 1</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="mobile1" required [(ngModel)]="student.mobile1">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="mobile1" class="col-md-2">Mobile 1</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="mobile1" required [(ngModel)]="student.mobile1">
         </div>
-        <div class="form-group row">
-            <label for="mobile2" class="col-md-2">Mobile 2</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="mobile2" required [(ngModel)]="student.mobile2">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="mobile2" class="col-md-2">Mobile 2</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="mobile2" required [(ngModel)]="student.mobile2">
         </div>
-        <div class="form-group row">
-            <label for="street" class="col-md-2">Street</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="street" required [(ngModel)]="student.street">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="street" class="col-md-2">Street</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="street" required [(ngModel)]="student.street">
         </div>
-        <div class="form-group row">
-            <label for="city" class="col-md-2">City</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="city" required [(ngModel)]="student.city">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="city" class="col-md-2">City</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="city" required [(ngModel)]="student.city">
         </div>
-        <div class="form-group row">
-            <label for="district" class="col-md-2">District</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="district" required [(ngModel)]="student.district">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="district" class="col-md-2">District</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="district" required [(ngModel)]="student.district">
         </div>
-        <div class="form-group row">
-            <label for="state" class="col-md-2">State</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="state" required [(ngModel)]="student.state">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="state" class="col-md-2">State</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="state" required [(ngModel)]="student.state">
         </div>
-        <div class="form-group row">
-            <label for="pincode" class="col-md-2">Pincode</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="pincode" required [(ngModel)]="student.pincode">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="pincode" class="col-md-2">Pincode</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="pincode" required [(ngModel)]="student.pincode">
         </div>
-        <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
-        <button type="submit" class="btn btn-success btn-md">Save</button>
+      </div>
+      <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
+      <button type="submit" class="btn btn-success btn-md">Save</button>
     </form>
-    <br/>
+  </div>
 </div>

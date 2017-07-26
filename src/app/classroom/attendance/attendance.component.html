@@ -1,45 +1,48 @@
-<form>
-  <div>
-    <label for="className" class="col-md-2">Select Class :</label>
-    <select name="className" required [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
-      <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
-    </select>
+<div class="card">
+  <div class="card-block">
+    <form>
+      <div class="form-group row">
+        <label class="col-md-2">Select Class :</label>
+        <div class="col-md-4">
+          <select class="form-control" name="className" required [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+            <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Select Section :</label>
+        <div class="col-md-4">
+          <select class="form-control" name="sectionName" required [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+            <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="selectedClass.attendanceType == 'Daily'" class="form-group row">
+        <label for="date" class="col-md-2">Date :</label>
+        <input type="date" name="date" required [(ngModel)]="dateAttendance" placeholder="Attendance Date" />&nbsp;&nbsp;
+        <button class="btn btn-primary btn-sm" (click)="fetchAttendance()">Fetch Attendance</button>
+      </div>
+      <div *ngIf="selectedClass.attendanceType == 'Session'">
+        <label for="sessionDate">Date :</label>
+        <input type="date" name="sessionDate" required [(ngModel)]="dateAttendance" placeholder="Attendance Date" />
+        <label for="session">Session: </label>
+        <select name="session" [(ngModel)]="session">
+          <option *ngFor="let sess of sessions" value={{sess.value}}>{{sess.type}}</option>
+        </select> &nbsp;&nbsp;
+        <button class="btn btn-primary btn-sm" (click)="fetchSessionAttendance()">Fetch Session Attendance</button>
+      </div>
+      <div *ngIf="selectedClass.attendanceType == 'Period'">
+        <label for="periodDate">Date :</label>
+        <input type="date" name="periodDate" required [(ngModel)]="dateAttendance" placeholder="Attendance Date" />
+        <label for="period">Period :</label>
+        <select name="period" [(ngModel)]="session">
+          <option *ngFor="let period of periods" value={{period}}>{{period}}</option>
+        </select> &nbsp;&nbsp;
+        <button class="btn btn-primary btn-sm" (click)="fetchSessionAttendance()">Fetch Period Attendance</button>
+      </div>
+    </form>
   </div>
-  <br/>
-  <div>
-    <label for="sectionName" class="col-md-2">Select Section :</label>
-    <select name="sectionName" required [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
-      <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
-    </select>
-  </div>
-  <br/>
-  <div *ngIf="selectedClass.attendanceType == 'Daily'">
-    <label for="date" class="col-md-2">Date :</label>
-    <input type="date" name="date" required [(ngModel)]="dateAttendance" placeholder="Attendance Date" />
-    <button class="btn btn-normal btn-md" (click)="fetchAttendance()">Fetch Attendance</button>
-  </div>
-  <div *ngIf="selectedClass.attendanceType == 'Session'">
-    <label for="sessionDate" class="col-md-2">Date :</label>
-    <input type="date" name="sessionDate" required [(ngModel)]="dateAttendance" placeholder="Attendance Date" />
-    <br/>
-    <label for="session" class="col-md-2">Session: </label>
-    <select name="session" [(ngModel)]="session">
-      <option *ngFor="let sess of sessions" value={{sess.value}}>{{sess.type}}</option>
-    </select>
-    <button class="btn btn-normal btn-md" (click)="fetchSessionAttendance()">Fetch Session Attendance</button>
-  </div>
-  <div *ngIf="selectedClass.attendanceType == 'Period'">
-    <label for="periodDate" class="col-md-2">Date :</label>
-    <input type="date" name="periodDate" required [(ngModel)]="dateAttendance" placeholder="Attendance Date" />
-    <br/>
-    <label for="period" class="col-md-2">Period :</label>
-    <select name="period" [(ngModel)]="session">
-      <option *ngFor="let period of periods" value={{period}}>{{period}}</option>
-    </select>
-    <button class="btn btn-normal btn-md" (click)="fetchSessionAttendance()">Fetch Period Attendance</button>
-  </div>
-</form>
-<br>
+</div>
 <div class="card">
   <div class="card-header">
     Marked Attendance
@@ -50,7 +53,7 @@
     </select>
     <button *ngIf="markedAttendances?.length == 0" class="btn btn-normal btn-md" (click)="noAbsentees()">No Absentees</button>
     <br>
-    <div class="col-md-8">
+    <div class="table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -75,11 +78,9 @@
   </div>
 </div>
 <div class="card">
-  <div class="card-header">
-    UnMarked Attendance
-  </div>
   <div class="card-block">
-    <div class="col-md-6">
+    <p>UnMarked Attendance</p>
+    <div class="table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -89,7 +90,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let attendance of unmarkedAttendances">
-            <td>{{attendance.studentName}}</td>
+            <td class="col-md-1">{{attendance.studentName}}</td>
             <td>
               <select [(ngModel)]="attendance.typeOfLeave">
                 <option *ngFor="let leaveType of leaveTypes" [value]="leaveType.type">{{leaveType.type}}</option>

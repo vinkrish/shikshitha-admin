@@ -1,20 +1,28 @@
-<form>
-  <div class="form-group row">
-    <label class="col-md-2">Select Class: </label>
-    <select class="col-md-4" name="className" [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
-      <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
-    </select>
-    <button *ngIf="addingSubjectTeacher" type="button" class="btn btn-warning btn-md" (click)="setupSubjectTeacher()">Setup Subject-Teacher</button>
-  </div>
-  <div class="form-group row">
-    <label class="col-md-2">Select Section: </label>
-    <select class="col-md-4" name="secName" [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
-      <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
-    </select>
-  </div>
-</form>
 <div class="card">
-  <div class="col-responsive">
+  <div class="card-block">
+    <form>
+      <div class="form-group row">
+        <label class="col-md-2">Select Class: </label>
+        <div class="col-md-4">
+          <select class="form-control" name="className" [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+            <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+          </select>
+        </div>
+        <button *ngIf="addingSubjectTeacher" type="button" class="btn btn-warning btn-md" (click)="setupSubjectTeacher()">Setup Subject-Teacher</button>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Select Section: </label>
+        <div class="col-md-4">
+          <select class="form-control" name="secName" [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+            <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="card">
+  <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>

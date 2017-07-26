@@ -1,25 +1,35 @@
-<form>
-  <div class="form-group row">
-    <label class="col-md-2">Class: </label>
-    <select class="col-md-4" name="clas" [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
-      <option *ngFor="let clas of classes" [ngValue]="clas">{{clas.className}}</option>
-    </select>
-  </div>
-  <div class="form-group row">
-    <label class="col-md-2">Exam: </label>
-    <select class="col-md-4" name="exm" [ngModel]="selectedExam" (ngModelChange)="examSelected($event)">
-      <option *ngFor="let exam of exams" [ngValue]="exam">{{exam.examName}}</option>
-    </select>
-  </div>
-  <div class="form-group row">
-    <label class="col-md-2">Exam Subject Group: </label>
-    <select class="col-md-4" name="esgName" [ngModel]="selectedEsg" (ngModelChange)="esgSelected($event)">
-      <option *ngFor="let esg of examSubjectGroups" [ngValue]="esg">{{esg.subjectGroupName}}</option>
-    </select>
-  </div>
-</form>
 <div class="card">
-  <div class="col-responsive">
+  <div class="card-block">
+    <form>
+      <div class="form-group row">
+        <label class="col-md-2">Class: </label>
+        <div class="col-md-4">
+          <select class="form-control" name="clas" [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+            <option *ngFor="let clas of classes" [ngValue]="clas">{{clas.className}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Exam: </label>
+        <div class="col-md-4">
+          <select class="form-control" name="exm" [ngModel]="selectedExam" (ngModelChange)="examSelected($event)">
+            <option *ngFor="let exam of exams" [ngValue]="exam">{{exam.examName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Exam Subject Group: </label>
+        <div class="col-md-4">
+          <select class="form-control" name="esgName" [ngModel]="selectedEsg" (ngModelChange)="esgSelected($event)">
+            <option *ngFor="let esg of examSubjectGroups" [ngValue]="esg">{{esg.subjectGroupName}}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="card">
+  <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -69,92 +79,93 @@
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="add()">Add </button>
 <button *ngIf="isPartitionSubject" type="button" class="btn btn-success btn-md" (click)="enablePartition()">Partition Subjects</button>
-<div *ngIf="addingExamSubject">
+<div *ngIf="addingExamSubject" class="card">
   <div *ngIf="examSubject">
-    <br>
-    <h3>New Exam Subject</h3>
-    <br>
-    <div class="form-group row">
-      <label class="col-md-2">Class:</label>
-      {{selectedClass.className}}
+    <div class="card-header">
+      New Exam Subject
     </div>
-    <div class="form-group row">
-      <label class="col-md-2">Exam:</label>
-      {{selectedExam.examName}}
+    <div class="card-block">
+      <div class="form-group row">
+        <label class="col-md-2">Class:</label>
+        {{selectedClass.className}}
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Exam:</label>
+        {{selectedExam.examName}}
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Subject Group:</label>
+        {{selectedEsg.subjectGroupName}}
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Type: </label>
+        <input [(ngModel)]="examSubject.type" placeholder="Type" />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Maximum Mark: </label>
+        <input [(ngModel)]="examSubject.maximumMark" placeholder="Maximum Mark" />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Fail Mark: </label>
+        <input [(ngModel)]="examSubject.failMark" placeholder="Fail Mark" />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Calculation: </label>
+        <input [(ngModel)]="examSubject.calculation" type="number" placeholder="Calculation" />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Percentage: </label>
+        <input [(ngModel)]="examSubject.percentage" placeholder="Percentage" />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Subject: </label>
+        <select [ngModel]="examSubject.subjectId" (ngModelChange)="subjectSelected($event)">
+          <option *ngFor="let sgs of subjectGroupSubjects" [ngValue]="sgs.subjectId">{{sgs.subjectName}}</option>
+        </select>
+      </div>
+      <br/>
+      <button class="btn btn-normal btn-md" (click)="close()">Back</button>
+      <button class="btn btn-success btn-md" (click)="save()">Save</button>
     </div>
-    <div class="form-group row">
-      <label class="col-md-2">Subject Group:</label>
-      {{selectedEsg.subjectGroupName}}
-    </div>
-    <div class="form-group row">
-      <label class="col-md-2">Type: </label>
-      <input [(ngModel)]="examSubject.type" placeholder="Type" />
-    </div>
-    <div class="form-group row">
-      <label class="col-md-2">Maximum Mark: </label>
-      <input [(ngModel)]="examSubject.maximumMark" placeholder="Maximum Mark" />
-    </div>
-    <div class="form-group row">
-      <label class="col-md-2">Fail Mark: </label>
-      <input [(ngModel)]="examSubject.failMark" placeholder="Fail Mark" />
-    </div>
-    <div class="form-group row">
-      <label class="col-md-2">Calculation: </label>
-      <input [(ngModel)]="examSubject.calculation" type="number" placeholder="Calculation" />
-    </div>
-    <div class="form-group row">
-      <label class="col-md-2">Percentage: </label>
-      <input [(ngModel)]="examSubject.percentage" placeholder="Percentage" />
-    </div>
-    <div class="form-group row">
-      <label class="col-md-2">Subject: </label>
-      <select [ngModel]="examSubject.subjectId" (ngModelChange)="subjectSelected($event)">
-        <option *ngFor="let sgs of subjectGroupSubjects" [ngValue]="sgs.subjectId">{{sgs.subjectName}}</option>
-      </select>
-    </div>
-    <br/>
-    <button class="btn btn-normal btn-md" (click)="close()">Back</button>
-    <button class="btn btn-success btn-md" (click)="save()">Save</button>
   </div>
-</div>
-<div *ngIf="addingPartitionSubject">
-  <div *ngIf="examSubject">
-    <h3>Exam Partition Subject Details</h3>
-    <div class="form-group row">
-      <label class="col-md-2">Class:</label>
-      {{selectedClass.className}}
+  <div *ngIf="addingPartitionSubject">
+    <div *ngIf="examSubject">
+      <h3>Exam Partition Subject Details</h3>
+      <div class="form-group row">
+        <label class="col-md-2">Class:</label>
+        {{selectedClass.className}}
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Exam:</label>
+        {{selectedExam.examName}}
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Type: </label>
+        <input [(ngModel)]="examSubject.type" placeholder="Type" />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Maximum Mark: </label>
+        <input [(ngModel)]="examSubject.maximumMark" placeholder="Maximum Mark" />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Fail Mark: </label>
+        <input [(ngModel)]="examSubject.failMark" placeholder="Fail Mark" />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Calculation: </label>
+        <input [(ngModel)]="examSubject.calculation" type="number" placeholder="Calculation" />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Percentage: </label>
+        <input [(ngModel)]="examSubject.percentage" placeholder="Percentage" />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Subject: </label>
+        <select [ngModel]="examSubject.subjectId" (ngModelChange)="partitionSubjectSelected($event)">
+          <option *ngFor="let sub of partitionSubjects" [ngValue]="sub.id">{{sub.subjectName}}</option>
+        </select>
+      </div>
+      <button class="btn btn-normal btn-md" (click)="close()">Back</button>
+      <button class="btn btn-success btn-md" (click)="save()">Save</button>
     </div>
-    <div class="form-group row">
-      <label class="col-md-2">Exam:</label>
-      {{selectedExam.examName}}
-    </div>
-    <div class="form-group row">
-      <label class="col-md-2">Type: </label>
-      <input [(ngModel)]="examSubject.type" placeholder="Type" />
-    </div>
-    <div class="form-group row">
-      <label class="col-md-2">Maximum Mark: </label>
-      <input [(ngModel)]="examSubject.maximumMark" placeholder="Maximum Mark" />
-    </div>
-    <div class="form-group row">
-      <label class="col-md-2">Fail Mark: </label>
-      <input [(ngModel)]="examSubject.failMark" placeholder="Fail Mark" />
-    </div>
-    <div class="form-group row">
-      <label class="col-md-2">Calculation: </label>
-      <input [(ngModel)]="examSubject.calculation" type="number" placeholder="Calculation" />
-    </div>
-    <div class="form-group row">
-      <label class="col-md-2">Percentage: </label>
-      <input [(ngModel)]="examSubject.percentage" placeholder="Percentage" />
-    </div>
-    <div class="form-group row">
-      <label class="col-md-2">Subject: </label>
-      <select [ngModel]="examSubject.subjectId" (ngModelChange)="partitionSubjectSelected($event)">
-        <option *ngFor="let sub of partitionSubjects" [ngValue]="sub.id">{{sub.subjectName}}</option>
-      </select>
-    </div>
-    <button class="btn btn-normal btn-md" (click)="close()">Back</button>
-    <button class="btn btn-success btn-md" (click)="save()">Save</button>
   </div>
-</div>

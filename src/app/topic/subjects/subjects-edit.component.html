@@ -1,39 +1,40 @@
-<div *ngIf="subject">
+<div *ngIf="subject" class="card">
+  <div class="card-block">
     <form (ngSubmit)="save()" #form="ngForm">
+      <div class="form-group row">
+        <label for="name" class="col-md-2">Name</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="name" required [(ngModel)]="subject.subjectName">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="partition" class="col-md-2">Partition Type</label>
+        <div class="col-md-4">
+          <select class="form-control" name="partition" required [(ngModel)]="subject.partitionType" (click)="togglePartition()">
+            <option *ngFor="let partition of partitions" [ngValue]="partition.type">{{partition.type}}</option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="partitionView">
         <div class="form-group row">
-            <label for="name" class="col-md-2">Name</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="name" required [(ngModel)]="subject.subjectName">
-            </div>
+          <label for="theory" class="col-md-2">Theory Subject</label>
+          <div class="col-md-4">
+            <select class="form-control" name="theory" required [(ngModel)]="subject.theorySubjectId">
+              <option *ngFor="let subs of subjects" [ngValue]="subs.id">{{subs.subjectName}}</option>
+            </select>
+          </div>
         </div>
         <div class="form-group row">
-            <label for="partition" class="col-md-2">Partition Type</label>
-            <div class="col-md-4">
-                <select class="form-control" name="partition" required [(ngModel)]="subject.partitionType" (click)="togglePartition()">
-                    <option *ngFor="let partition of partitions" [ngValue]="partition.type">{{partition.type}}</option>
-                </select>
-            </div>
+          <label for="practical" class="col-md-2">Practical Subject</label>
+          <div class="col-md-4">
+            <select class="form-control" name="practical" required [(ngModel)]="subject.practicalSubjectId">
+              <option *ngFor="let subs of subjects" [ngValue]="subs.id">{{subs.subjectName}}</option>
+            </select>
+          </div>
         </div>
-        <div *ngIf="partitionView">
-            <div class="form-group row">
-                <label for="theory" class="col-md-2">Theory Subject</label>
-                <div class="col-md-4">
-                    <select class="form-control" name="theory" required [(ngModel)]="subject.theorySubjectId">
-                        <option *ngFor="let subs of subjects" [ngValue]="subs.id">{{subs.subjectName}}</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="practical" class="col-md-2">Practical Subject</label>
-                <div class="col-md-4">
-                    <select class="form-control" name="practical" required [(ngModel)]="subject.practicalSubjectId">
-                        <option *ngFor="let subs of subjects" [ngValue]="subs.id">{{subs.subjectName}}</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
-        <button type="submit" class="btn btn-success btn-md">Save</button>
+      </div>
+      <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
+      <button type="submit" class="btn btn-success btn-md">Save</button>
     </form>
-    <br/>
+  </div>
 </div>

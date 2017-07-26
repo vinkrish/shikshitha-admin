@@ -1,25 +1,35 @@
-<form #form="ngForm">
-  <div class="form-group row">
-    <label class="col-md-2">Coscholastic: </label>
-    <select class="col-md-4" name="coschName" [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
-      <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
-    </select>
-  </div>
-  <div class="form-group row">
-    <label class="col-md-2">Section Heading: </label>
-    <select class="col-md-4" name="secHeadName" [ngModel]="selectedSectionHeading" (ngModelChange)="sectionHeadingSelected($event)">
-      <option *ngFor="let secHead of sectionHeadings" [ngValue]="secHead">{{secHead.name}}</option>
-    </select>
-  </div>
-  <div class="form-group row">
-    <label for="topicName" class="col-md-2">Topic: </label>
-    <select class="col-md-4" name="topicName" name="topicName" [ngModel]="selectedTopicPrimary" (ngModelChange)="topicSelected($event)">
-      <option *ngFor="let topic of topicPrimarys" [ngValue]="topic">{{topic.name}}</option>
-    </select>
-  </div>
-</form>
 <div class="card">
-  <div class="col-md-6">
+  <div class="card-block">
+    <form #form="ngForm">
+      <div class="form-group row">
+        <label class="col-md-2">Coscholastic :</label>
+        <div class="col-md-4">
+          <select class="form-control" name="coschName" [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
+            <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Section Heading :</label>
+        <div class="col-md-4">
+          <select class="form-control" name="secHeadName" [ngModel]="selectedSectionHeading" (ngModelChange)="sectionHeadingSelected($event)">
+            <option *ngFor="let secHead of sectionHeadings" [ngValue]="secHead">{{secHead.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="topicName" class="col-md-2">Topic :</label>
+        <div class="col-md-4">
+          <select class="form-control" name="topicName" name="topicName" [ngModel]="selectedTopicPrimary" (ngModelChange)="topicSelected($event)">
+            <option *ngFor="let topic of topicPrimarys" [ngValue]="topic">{{topic.name}}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="card">
+  <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -30,7 +40,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let aspect of aspects" (click)="onSelect(aspect)" [class.selected]="aspect === selectedAspect">
-          <td class="col-md-3">
+          <td>
             <input [(ngModel)]="aspect.name" />
           </td>
           <td>
@@ -50,11 +60,12 @@
 </div>
 <div class="error" *ngIf="error">{{error}}</div>
 <button type="button" class="btn btn-success btn-md" (click)="add()">Add New </button>
-<div *ngIf="addingAspect">
+<div *ngIf="addingAspect" class="card">
   <br>
-  <div *ngIf="aspectPrimary">
-    <h3>CCE Aspect Primary Details</h3>
-    <br/>
+  <div class="card-header">
+    New CCE Aspect Primary Details
+  </div>
+  <div class="card-block">
     <form (ngSubmit)="save()" #classForm="ngForm">
       <div class="form-group row">
         <label for="name" class="col-md-2">Name :</label>
@@ -83,6 +94,5 @@
       <button type="button" class="btn btn-normal btn-md" (click)="close()">Back</button>
       <button type="submit" class="btn btn-success btn-md">Save</button>
     </form>
-    <br/>
   </div>
 </div>

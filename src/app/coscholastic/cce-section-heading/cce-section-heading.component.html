@@ -1,11 +1,13 @@
 <div class="form-group row">
   <label class="col-md-2">Select Coscholastic: </label>
-  <select class="col-md-4" [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
-    <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
-  </select>
+  <div class="col-md-4">
+    <select class="form-control" [ngModel]="selectedCosch" (ngModelChange)="coschSelected($event)">
+      <option *ngFor="let cosch of coscholastics" [ngValue]="cosch">{{cosch.name}}</option>
+    </select>
+  </div>
 </div>
 <div class="card">
-  <div class="col-md-6">
+  <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>

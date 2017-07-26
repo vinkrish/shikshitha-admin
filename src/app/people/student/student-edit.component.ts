@@ -44,6 +44,9 @@ export class StudentEditComponent implements OnInit, OnDestroy {
       } else {
         this.navigated = false;
         this.student = new Student();
+        this.student.schoolId = +this.cookieService.get("schoolId");
+        this.student.classId = this.classId;
+        this.student.sectionId = this.sectionId;
       }
     });
   }

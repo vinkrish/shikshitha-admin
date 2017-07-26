@@ -1,24 +1,25 @@
-<div *ngIf="classSubjectGroup">
-    <br>
-    <h3>New Class Subject-Group</h3>
-    <br/>
+<div *ngIf="classSubjectGroup" class="card">
+  <div class="card-header">
+    New Class Subject Group
+  </div>
+  <div class="card-block">
     <form (ngSubmit)="save()" #form="ngForm">
-        <div class="form-group row">
-            <label for="name" class="col-md-2">Class</label>
-            <div class="col-md-4">
-                {{className}}
-            </div>
+      <div class="form-group row">
+        <label for="name" class="col-md-2">Class</label>
+        <div class="col-md-4">
+          {{className}}
         </div>
-        <div class="form-group row">
-            <label for="type" class="col-md-2">Subject-Group</label>
-            <div class="col-md-4">
-                <select class="form-control" id="type" name="type" required [ngModel]="classSubjectGroup.subjectGroupId" (ngModelChange)="subjectGroupSelected($event)">
-                    <option *ngFor="let subjectGroup of subjectGroups" [ngValue]="subjectGroup.id">{{subjectGroup.subjectGroupName}}</option>
-                </select>
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="type" class="col-md-2">Subject-Group</label>
+        <div class="col-md-4">
+          <select class="form-control" id="type" name="type" required [ngModel]="classSubjectGroup.subjectGroupId" (ngModelChange)="subjectGroupSelected($event)">
+            <option *ngFor="let subjectGroup of subjectGroups" [ngValue]="subjectGroup.id">{{subjectGroup.subjectGroupName}}</option>
+          </select>
         </div>
-        <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
-        <button type="submit" class="btn btn-success btn-md">Save</button>
+      </div>
+      <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
+      <button type="submit" class="btn btn-success btn-md">Save</button>
     </form>
-    <br/>
+  </div>
 </div>

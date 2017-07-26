@@ -1,57 +1,58 @@
-<div *ngIf="teacher">
+<div *ngIf="teacher" class="card">
+  <div class="card-block">
     <form (ngSubmit)="save()" #form="ngForm">
-        <div class="form-group row">
-            <label for="name" class="col-md-2">Name</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="name" required [(ngModel)]="teacher.name">
-            </div>
+      <div class="form-group row">
+        <label for="name" class="col-md-2">Name</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="name" required [(ngModel)]="teacher.name">
         </div>
-        <div class="form-group row">
-            <label for="username" class="col-md-2">Username</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="username" required [(ngModel)]="teacher.username">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="username" class="col-md-2">Username</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="username" required [(ngModel)]="teacher.username">
         </div>
-        <div class="form-group row">
-            <label for="mobile" class="col-md-2">Mobile</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="mobile" required [(ngModel)]="teacher.mobile">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="mobile" class="col-md-2">Mobile</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="mobile" required [(ngModel)]="teacher.mobile">
         </div>
-        <div class="form-group row">
-            <label for="qualification" class="col-md-2">Qualification</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="qualification" required [(ngModel)]="teacher.qualification">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="qualification" class="col-md-2">Qualification</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="qualification" required [(ngModel)]="teacher.qualification">
         </div>
-        <div class="form-group row">
-            <label for="dob" class="col-md-2">Date Of Birth</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="dob" required [(ngModel)]="teacher.dateOfBirth">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="dob" class="col-md-2">Date Of Birth</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="dob" required [(ngModel)]="teacher.dateOfBirth">
         </div>
-        <div class="form-group row">
-            <label for="doj" class="col-md-2">Date Of Joining</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="doj" required [(ngModel)]="teacher.dateOfJoining">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="doj" class="col-md-2">Date Of Joining</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="doj" required [(ngModel)]="teacher.dateOfJoining">
         </div>
-        <div class="form-group row">
-            <label for="gender" class="col-md-2">Gender</label>
-            <div class="col-md-4">
-                <select class="form-control" id="gender" name="gender" required [(ngModel)]="teacher.gender">
-                    <option *ngFor="let sex of genders" [value]="sex.type">{{sex.type}}</option>
-                </select>
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="gender" class="col-md-2">Gender</label>
+        <div class="col-md-4">
+          <select class="form-control" id="gender" name="gender" required [(ngModel)]="teacher.gender">
+            <option *ngFor="let sex of genders" [value]="sex.type">{{sex.type}}</option>
+          </select>
         </div>
-        <div class="form-group row">
-            <label for="email" class="col-md-2">Email</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="email" required [(ngModel)]="teacher.email">
-            </div>
+      </div>
+      <div class="form-group row">
+        <label for="email" class="col-md-2">Email</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="email" required [(ngModel)]="teacher.email">
         </div>
-        <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
-        <button type="submit" class="btn btn-success btn-md">Save</button>
+      </div>
+      <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
+      <button type="submit" class="btn btn-success btn-md">Save</button>
     </form>
-    <br/>
+  </div>
 </div>

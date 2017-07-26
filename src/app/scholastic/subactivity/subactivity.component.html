@@ -1,45 +1,49 @@
-<div class="form-group row">
-  <label class="col-md-1">Class: </label>
-  <div class="col-md-4">
-    <select class="form-control" name="clas" [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
-      <option *ngFor="let clas of classes" [ngValue]="clas">{{clas.className}}</option>
-    </select>
-  </div>
-</div>
-<div class="form-group row">
-  <label class="col-md-1">Exam: </label>
-  <div class="col-md-4">
-    <select class="form-control" name="exm" [ngModel]="selectedExam" (ngModelChange)="examSelected($event)">
-      <option *ngFor="let exam of exams" [ngValue]="exam">{{exam.examName}}</option>
-    </select>
-  </div>
-</div>
-<div class="form-group row">
-  <label class="col-md-1">Section: </label>
-  <div class="col-md-4">
-    <select class="form-control" name="sec" [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
-      <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
-    </select>
-  </div>
-</div>
-<div class="form-group row">
-  <label class="col-md-1">Subject: </label>
-  <div class="col-md-4">
-    <select class="form-control" name="subj" [ngModel]="selectedExamSubject" (ngModelChange)="examSubjectSelected($event)">
-      <option *ngFor="let examSubject of examSubjects" [ngValue]="examSubject">{{examSubject.subjectName}}</option>
-    </select>
-  </div>
-</div>
-<div class="form-group row">
-  <label class="col-md-1">Activity: </label>
-  <div class="col-md-4">
-    <select class="form-control" name="act" [ngModel]="selectedActivity" (ngModelChange)="activitySelected($event)">
-      <option *ngFor="let act of activities" [ngValue]="act">{{act.activityName}}</option>
-    </select>
+<div class="card">
+  <div class="card-block">
+    <div class="form-group row">
+      <label class="col-md-1">Class: </label>
+      <div class="col-md-4">
+        <select class="form-control" name="clas" [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+          <option *ngFor="let clas of classes" [ngValue]="clas">{{clas.className}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-1">Exam: </label>
+      <div class="col-md-4">
+        <select class="form-control" name="exm" [ngModel]="selectedExam" (ngModelChange)="examSelected($event)">
+          <option *ngFor="let exam of exams" [ngValue]="exam">{{exam.examName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-1">Section: </label>
+      <div class="col-md-4">
+        <select class="form-control" name="sec" [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+          <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-1">Subject: </label>
+      <div class="col-md-4">
+        <select class="form-control" name="subj" [ngModel]="selectedExamSubject" (ngModelChange)="examSubjectSelected($event)">
+          <option *ngFor="let examSubject of examSubjects" [ngValue]="examSubject">{{examSubject.subjectName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-1">Activity: </label>
+      <div class="col-md-4">
+        <select class="form-control" name="act" [ngModel]="selectedActivity" (ngModelChange)="activitySelected($event)">
+          <option *ngFor="let act of activities" [ngValue]="act">{{act.activityName}}</option>
+        </select>
+      </div>
+    </div>
   </div>
 </div>
 <div class="card">
-  <div class="col-responsive">
+  <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -84,67 +88,68 @@
 <button type="button" class="btn btn-success btn-md" (click)="add()">Add </button>
 <div *ngIf="addingSubActivity">
   <div *ngIf="subActivity">
-    <br>
-    <h3>New Sub-Activity</h3>
-    <br/>
-    <form (ngSubmit)="save()" #form="ngForm">
-      <div class="form-group row">
-        <label for="className" class="col-md-1">Class :</label>
-        <div class="col-md-4">
-          {{selectedClass.className}}
+    <div class="card-header">
+      New SubActivity
+    </div>
+    <div class="card-block">
+      <form (ngSubmit)="save()" #form="ngForm">
+        <div class="form-group row">
+          <label for="className" class="col-md-1">Class :</label>
+          <div class="col-md-4">
+            {{selectedClass.className}}
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="sectionName" class="col-md-1">Section :</label>
-        <div class="col-md-4">
-          {{selectedSection.sectionName}}
+        <div class="form-group row">
+          <label for="sectionName" class="col-md-1">Section :</label>
+          <div class="col-md-4">
+            {{selectedSection.sectionName}}
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="exanName" class="col-md-1">Exam :</label>
-        <div class="col-md-4">
-          {{selectedExam.examName}}
+        <div class="form-group row">
+          <label for="exanName" class="col-md-1">Exam :</label>
+          <div class="col-md-4">
+            {{selectedExam.examName}}
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="subjectName" class="col-md-1">Subject :</label>
-        <div class="col-md-4">
-          {{selectedExamSubject.subjectName}}
+        <div class="form-group row">
+          <label for="subjectName" class="col-md-1">Subject :</label>
+          <div class="col-md-4">
+            {{selectedExamSubject.subjectName}}
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="activityName" class="col-md-1">Activity :</label>
-        <div class="col-md-4">
-          {{selectedActivity.activityName}}
+        <div class="form-group row">
+          <label for="activityName" class="col-md-1">Activity :</label>
+          <div class="col-md-4">
+            {{selectedActivity.activityName}}
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="name" class="col-md-1">Name</label>
-        <div class="col-md-4">
-          <input type="text" class="form-control" name="name" required [(ngModel)]="subActivity.subActivityName">
+        <div class="form-group row">
+          <label for="name" class="col-md-1">Name</label>
+          <div class="col-md-4">
+            <input type="text" class="form-control" name="name" required [(ngModel)]="subActivity.subActivityName">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="type" class="col-md-1">Type</label>
-        <div class="col-md-4">
-          <input type="text" class="form-control" name="type" required [(ngModel)]="subActivity.type">
+        <div class="form-group row">
+          <label for="type" class="col-md-1">Type</label>
+          <div class="col-md-4">
+            <input type="text" class="form-control" name="type" required [(ngModel)]="subActivity.type">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="maxMark" class="col-md-1">Maximum Mark</label>
-        <div class="col-md-4">
-          <input type="number" class="form-control" name="maxMark" required [(ngModel)]="subActivity.maximumMark">
+        <div class="form-group row">
+          <label for="maxMark" class="col-md-1">Maximum Mark</label>
+          <div class="col-md-4">
+            <input type="number" class="form-control" name="maxMark" required [(ngModel)]="subActivity.maximumMark">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="weightage" class="col-md-1">Weightage</label>
-        <div class="col-md-4">
-          <input type="number" class="form-control" name="weightage" required [(ngModel)]="subActivity.weightage">
+        <div class="form-group row">
+          <label for="weightage" class="col-md-1">Weightage</label>
+          <div class="col-md-4">
+            <input type="number" class="form-control" name="weightage" required [(ngModel)]="subActivity.weightage">
+          </div>
         </div>
-      </div>
-      <button type="button" class="btn btn-normal btn-md" (click)="close()">Back</button>
-      <button type="submit" class="btn btn-success btn-md">Save</button>
-    </form>
-    <br/>
+        <button type="button" class="btn btn-normal btn-md" (click)="close()">Back</button>
+        <button type="submit" class="btn btn-success btn-md">Save</button>
+      </form>
+    </div>
   </div>
 </div>

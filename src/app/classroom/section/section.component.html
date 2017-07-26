@@ -4,11 +4,15 @@
       Manage Data
     </div>
     <div class="card-block">
-      <label>Select Class: </label>
-      <select [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
-        <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
-      </select>
-      <div *ngIf="selectedClass" class="col-md-6">
+      <div class="form-group row">
+        <label class="col-md-2">Select Class: </label>
+        <div class="col-md-4">
+          <select class="form-control" [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+            <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="selectedClass" class="table-responsive">
         <table class="table table-striped">
           <thead>
             <tr>
