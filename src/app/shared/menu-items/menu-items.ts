@@ -88,6 +88,10 @@ const MENUITEMS = [
       {
         state: 'class-subject-group',
         name: 'Class Subject Group'
+      },
+      {
+        state: 'events',
+        name: 'Events'
       }
     ]
   },

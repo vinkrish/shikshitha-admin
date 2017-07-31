@@ -16,13 +16,18 @@ import { SubjectTeacherComponent } from './subject-teacher/subject-teacher.compo
 import { SubjectTeacherEditComponent } from './subject-teacher/subject-teacher-edit.component';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { SubjectsEditComponent } from './subjects/subjects-edit.component';
+import { EventComponent } from './events/event.component';
+import { EventEditComponent } from './events/event-edit.component';
+import { DatePipe } from '@angular/common';
+import { MomentModule } from 'angular2-moment';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule.forChild(TopicRoutes),
-    MaterialModule
+    MaterialModule,
+    MomentModule
   ],
   declarations: [
   	ClassSubjectGroupComponent,
@@ -35,8 +40,11 @@ import { SubjectsEditComponent } from './subjects/subjects-edit.component';
   	SubjectTeacherComponent,
     SubjectTeacherEditComponent,
   	SubjectsComponent,
-    SubjectsEditComponent
-  ]
+    SubjectsEditComponent,
+    EventComponent,
+    EventEditComponent
+  ],
+  providers: [DatePipe]
 })
 
 export class TopicModule {}

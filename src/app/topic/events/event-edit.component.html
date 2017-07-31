@@ -1,0 +1,80 @@
+<div *ngIf="event" class="card">
+  <div class="card-block">
+    <form (ngSubmit)="save()" #form="ngForm" ngNativeValidate>
+      <div class="form-group row">
+        <label class="col-md-2">Title :</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" name="eventTitle" required [(ngModel)]="event.eventTitle">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Description :</label>
+        <div class="col-md-8">
+          <textarea rows="3" class="form-control" name="eventDescription" [(ngModel)]="event.eventDescription"></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Start Date :</label>
+        <div class="col-md-4">
+          <input type="date" class="form-control" name="startDate" required [(ngModel)]="event.startDate">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">End Date :</label>
+        <div class="col-md-4">
+          <input type="date" class="form-control" name="endDate" [(ngModel)]="event.endDate">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">Start Time :</label>
+        <div class="col-md-4">
+          <input type="time" class="form-control" name="startTime" [ngModel]="(event.startTime | amFromUnix) | amDateFormat:'HH:mm'" (ngModelChange)="startTimeSet($event)" >
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">End Time :</label>
+        <div class="col-md-4">
+          <input type="time" class="form-control" name="endTime" [(ngModel)]="event.endTime">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2">No Of Days :</label>
+        <div class="col-md-4">
+          <input type="number" class="form-control" name="noOfDays" [(ngModel)]="event.noOfDays">
+        </div>
+      </div>
+      <div class="form-group">
+          <div class="checkbox">
+          <label>
+            <input type="checkbox" name="isContinuousDays" [(ngModel)]="event.isContinuousDays">
+            Is it Continuous Days?
+          </label>
+          </div>
+      </div>
+      <div class="form-group">
+          <div class="checkbox">
+          <label>
+            <input type="checkbox" name="isFullDayEvent" [(ngModel)]="event.isFullDayEvent">
+            Is it Full Day Event?
+          </label>
+          </div>
+      </div>
+      <div class="form-group">
+          <div class="checkbox">
+          <label>
+            <input type="checkbox" name="isRecurring" [(ngModel)]="event.isRecurring">
+            Is it recurring?
+          </label>
+          </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-2">Created Date :</label>
+        <label>
+          <p>{{today | date:'dd-MM-yyyy'}}</p>
+        </label>
+      </div>
+      <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
+      <button type="submit" class="btn btn-success btn-md">Save</button>
+    </form>
+  </div>
+</div>

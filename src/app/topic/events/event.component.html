@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped" frame="box">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Start Date</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evnt of events" (click)="onSelect(evnt)" [class.selected]="evnt === selectedEvent">
+          <td>{{evnt.eventTitle}}</td>
+          <td>{{evnt.startDate | date:'dd-MM-yyyy'}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-primary btn-sm" (click)="gotoEdit(evnt, $event)">
+              edit
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteEvent(evnt, $event)">
+              delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addEvent()">Add New </button>
+<div *ngIf="addingEvent">
+  <ui-event-detail (close)="close($event)"></ui-event-detail>
+</div>

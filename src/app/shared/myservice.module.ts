@@ -11,6 +11,7 @@ import { SubjectGroupService }      from '../topic/subject-group/subject-group.s
 import { SubjectGroupSubjectService}from '../topic/subject-group-subject/subject-group-subject.service';
 import { SubjectTeacherService }    from '../topic/subject-teacher/subject-teacher.service';
 import { SubjectsService }        	from '../topic/subjects/subjects.service';
+import { EventService }             from '../topic/events/event.service';
 import { TeacherService }        	from '../people/teacher/teacher.service';
 import { TimetableService }        	from '../classroom/timetable/timetable.service';
 import { ExamService }        		from '../scholastic/exam/exam.service';
@@ -50,6 +51,7 @@ export const myServices = [
     SubjectGroupSubjectService,
     SubjectTeacherService,
     SubjectsService,
+    EventService,
     TeacherService,
     TimetableService,
     ExamService,

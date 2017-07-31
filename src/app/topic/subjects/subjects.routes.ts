@@ -16,7 +16,7 @@ export const subjectsRoutes: Routes = [
     path: 'subject/edit/:id',
     component: SubjectsEditComponent,
     data: {
-        heading: 'Subejcts Edit'
+        heading: 'Subejct Edit'
     },
     canActivate: [LoggedInGuard]
   }

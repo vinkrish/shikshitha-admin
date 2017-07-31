@@ -6,6 +6,7 @@ import { SubjectGroupSubjectComponent } from './subject-group-subject/subject-gr
 import { SubjectStudentComponent } from './subject-student/subject-student.component';
 import { subjectTeacherRoutes } from './subject-teacher/subject-teacher.routes';
 import { subjectsRoutes } from './subjects/subjects.routes';
+import { eventRoutes } from './events/event.routes';
 
 import { LoggedInGuard } from '../authentication/logged-in.guard';
 
@@ -38,6 +39,7 @@ export const TopicRoutes: Routes = [
       canActivate: [LoggedInGuard]
     },
     ...subjectTeacherRoutes,
-    ...subjectsRoutes ]
+    ...subjectsRoutes,
+    ...eventRoutes ]
   }
 ];
