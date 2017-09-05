@@ -2,6 +2,8 @@ import { Component, OnInit }          from '@angular/core';
 import { Router }                     from '@angular/router';
 import { Clas }                       from '../../classroom/class/clas';
 import { Section }			              from '../../classroom/section/section';
+import { Teacher }                    from '../../people/teacher/teacher';
+import { TeacherService }             from '../../people/teacher/teacher.service';
 import { SubjectTeacher }		          from './subject-teacher'
 import { ClassService }               from '../../classroom/class/class.service';
 import { SectionService }		          from '../../classroom/section/section.service';
@@ -19,6 +21,7 @@ export class SubjectTeacherComponent implements OnInit {
   selectedClass: Clas;
   sections: Section[];
   selectedSection: Section;
+  teachers: Teacher[];
   subjectTeachers: SubjectTeacher[];
   selectedSubjectTeacher: SubjectTeacher;
   addingSubjectTeacher = false;
@@ -29,6 +32,7 @@ export class SubjectTeacherComponent implements OnInit {
     private cookieService: CookieService,
     private classService: ClassService,
     private sectionService: SectionService,
+    private teacherService: TeacherService,
     private subjectTeacherService: SubjectTeacherService) { 
   }
 
@@ -36,6 +40,14 @@ export class SubjectTeacherComponent implements OnInit {
     this.getClasses();
     this.selectedClass = new Clas(0, "");
     this.selectedSection = new Section(0, "");
+    this.getTeachers();
+  }
+
+  getTeachers() {
+    this.teacherService
+      .getTeachers()
+      .then(teachers => this.teachers = teachers)
+      .catch(error => this.error = error);
   }
 
   getClasses() {
@@ -93,7 +105,12 @@ export class SubjectTeacherComponent implements OnInit {
 
   gotoEdit(subjectTeacher: SubjectTeacher, event: any) {
     event.stopPropagation();
-    this.router.navigate(['topic/subject-teacher/edit', subjectTeacher.id]);
+    //this.router.navigate(['topic/subject-teacher/edit', subjectTeacher.id]);
+    this.subjectTeacherService
+      .put(subjectTeacher)
+      .then(subjectTeacher => {
+      })
+      .catch(error => this.error = error);
   }
 
   deleteSubjectTeacher(subjectTeacher: SubjectTeacher, event: any) {

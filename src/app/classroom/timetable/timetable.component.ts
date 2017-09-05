@@ -30,6 +30,7 @@ export class TimetableComponent {
   selectedDay: string;
   days: string[];
   subjects: Subjects[];
+  addingTimetable = false;
   error: any;
 
   constructor(
@@ -67,6 +68,7 @@ export class TimetableComponent {
 	this.selectedTimetable = [];
 	this.selectedDay = "";
 	this.days = [];
+	this.addingTimetable = false;
   }
 
   getSections(id: number) {
@@ -85,6 +87,7 @@ export class TimetableComponent {
 	this.selectedDay = "";
 	this.days = [];
 	this.getTimetable(this.selectedSection.id);
+	this.addingTimetable = true;
   }
 
   getTimetable(sectionId: number) {
@@ -171,6 +174,18 @@ export class TimetableComponent {
 	if (this.selectedDay !== "") {
 	  this.isNewTimetable = true;
 	}
+  }
+
+  addDayTimetable() {
+  	this.timetableService.postWeekdayTimetable(this.selectedClass.id, this.selectedSection.id);
+  }
+
+  copyTimetable() {
+  	this.timetableService.copyTimetable(this.selectedClass.id, this.selectedSection.id);
+  }
+
+  addSaturdayTimetable() {
+	this.timetableService.postSaturdayTimetable(this.selectedClass.id, this.selectedSection.id);
   }
 
   goBack() {

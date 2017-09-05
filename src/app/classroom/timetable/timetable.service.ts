@@ -24,6 +24,30 @@ export class TimetableService {
       .catch(this.handleError);
   }
 
+  postWeekdayTimetable(classId: number, sectionId: number) {
+    let url = `${this.timetableUrl}/day/${classId}/${sectionId}`;
+    return this.http
+      .post(url, '', { headers: this.headers })
+      .toPromise()
+      .catch(this.handleError);
+  }
+
+  copyTimetable(classId: number, sectionId: number) {
+    let url = `${this.timetableUrl}/week/${classId}/${sectionId}`;
+    return this.http
+      .post(url, '', { headers: this.headers })
+      .toPromise()
+      .catch(this.handleError);
+  }
+
+  postSaturdayTimetable(classId: number, sectionId: number) {
+    let url = `${this.timetableUrl}/saturday/${classId}/${sectionId}`;
+    return this.http
+      .post(url, '', { headers: this.headers })
+      .toPromise()
+      .catch(this.handleError);
+  }
+
   save(timetable: Timetable): Promise<Timetable> {
     if (timetable.id) {
       return this.put(timetable);

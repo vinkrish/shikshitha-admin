@@ -35,10 +35,14 @@
       <tbody>
         <tr *ngFor="let subjectTeacher of subjectTeachers" (click)="onSelect(subjectTeacher)" [class.selected]="subjectTeacher === selectedSubjectTeacher">
           <td>{{subjectTeacher.subjectName}}</td>
-          <td>{{subjectTeacher.teacherName}}</td>
+          <td>
+            <select [(ngModel)]="subjectTeacher.teacherId">
+            <option *ngFor="let teacher of teachers" [value]="teacher.id">{{teacher.name}}</option>
+          </select>
+          </td>
           <td>
             <button type="button" class="btn btn-outline-primary btn-sm" (click)="gotoEdit(subjectTeacher, $event)">
-              edit
+              save
             </button>
           </td>
           <td>
