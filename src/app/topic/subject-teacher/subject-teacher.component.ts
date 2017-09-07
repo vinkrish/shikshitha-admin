@@ -103,6 +103,15 @@ export class SubjectTeacherComponent implements OnInit {
     this.subjectTeacherService.save(this.selectedClass);
   }
 
+  teacherSelected(teacherId) {
+    for (var i = 0; i < this.teachers.length; i++) {
+      if (this.teachers[i].id == teacherId) {
+        this.selectedSubjectTeacher.teacherId = this.teachers[i].id;
+        this.selectedSubjectTeacher.teacherName = this.teachers[i].name;
+      }
+    }
+  }
+
   gotoEdit(subjectTeacher: SubjectTeacher, event: any) {
     event.stopPropagation();
     //this.router.navigate(['topic/subject-teacher/edit', subjectTeacher.id]);

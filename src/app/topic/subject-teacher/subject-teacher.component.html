@@ -36,7 +36,7 @@
         <tr *ngFor="let subjectTeacher of subjectTeachers" (click)="onSelect(subjectTeacher)" [class.selected]="subjectTeacher === selectedSubjectTeacher">
           <td>{{subjectTeacher.subjectName}}</td>
           <td>
-            <select [(ngModel)]="subjectTeacher.teacherId">
+            <select [(ngModel)]="subjectTeacher.teacherId" (change)="teacherSelected($event.target.value)">
             <option *ngFor="let teacher of teachers" [value]="teacher.id">{{teacher.name}}</option>
           </select>
           </td>
