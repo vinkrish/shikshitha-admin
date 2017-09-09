@@ -59,6 +59,14 @@ export class SubjectTeacherService {
       .catch(this.handleError);
   }
 
+  update(subjectTeacher: SubjectTeacher[]) {
+    let url = `${this.subjectTeacherUrl}/update`;
+    return this.http
+      .put(url, JSON.stringify(subjectTeacher), { headers: this.headers })
+      .toPromise()
+      .catch(this.handleError);
+  }
+
   private handleError(error: any) {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);

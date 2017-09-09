@@ -103,6 +103,10 @@ export class SubjectTeacherComponent implements OnInit {
     this.subjectTeacherService.save(this.selectedClass);
   }
 
+  updateSubjectTeacher() {
+    this.subjectTeacherService.update(this.subjectTeachers);
+  }
+
   teacherSelected(teacherId) {
     for (var i = 0; i < this.teachers.length; i++) {
       if (this.teachers[i].id == teacherId) {

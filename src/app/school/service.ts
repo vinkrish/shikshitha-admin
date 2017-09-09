@@ -9,4 +9,5 @@ export class Service {
 	isHomework: boolean;
 	isHomeworkSms: boolean;
 	isTimetable: boolean;
+	isReport: boolean;
 }

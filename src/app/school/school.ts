@@ -2,6 +2,7 @@ export class School {
 	id: number;
 	schoolName: string;
 	website: string;
+	logo: string;
 	shortenedSchoolName: string;
 	contactPersonName: string;
 	adminUsername: string;
@@ -17,4 +18,5 @@ export class School {
 	pincode: string;
 	pincipalId: number;
 	numberOfStudents: number;
+	numberOfSms: number;
 }
