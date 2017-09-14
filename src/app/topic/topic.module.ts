@@ -18,6 +18,8 @@ import { SubjectsComponent } from './subjects/subjects.component';
 import { SubjectsEditComponent } from './subjects/subjects-edit.component';
 import { EventComponent } from './events/event.component';
 import { EventEditComponent } from './events/event-edit.component';
+import { ClassEventComponent } from './class-event/class-event.component';
+import { ClassEventEditComponent } from './class-event/class-event-edit.component';
 import { DatePipe } from '@angular/common';
 import { MomentModule } from 'angular2-moment';
 
@@ -42,7 +44,9 @@ import { MomentModule } from 'angular2-moment';
   	SubjectsComponent,
     SubjectsEditComponent,
     EventComponent,
-    EventEditComponent
+    EventEditComponent,
+    ClassEventComponent,
+    ClassEventEditComponent
   ],
   providers: [DatePipe]
 })

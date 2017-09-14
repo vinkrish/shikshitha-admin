@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-block">
+    <div class="form-group row">
+      <label class="col-md-1">Event :</label>
+      <div class="col-md-4">
+        <select class="form-control" [ngModel]="selectedEvent" (ngModelChange)="eventSelected($event)">
+          <option *ngFor="let event of events" [ngValue]="event">{{event.eventTitle}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-block">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ce of classEvents" (click)="onSelect(ce)" [class.selected]="ce === selectedCE">
+            <td class="col-md-1">{{ce.className}}</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteCE(ce, $event)">
+                delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addCE()">Add New </button>
+<div *ngIf="addingCE">
+  <ui-ce-detail (close)="close($event)"></ui-ce-detail>
+</div>

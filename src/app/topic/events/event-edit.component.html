@@ -68,6 +68,14 @@
           </div>
       </div>
       <div class="form-group">
+          <div class="checkbox">
+          <label>
+            <input type="checkbox" name="isSchool" [(ngModel)]="event.isSchool">
+            Is event is for whole School?
+          </label>
+          </div>
+      </div>
+      <div class="form-group">
         <label class="col-md-2">Created Date :</label>
         <label>
           <p>{{today | date:'dd-MM-yyyy'}}</p>

@@ -92,6 +92,10 @@ const MENUITEMS = [
       {
         state: 'events',
         name: 'Events'
+      },
+      {
+        state: 'class-event',
+        name: 'Class Event'
       }
     ]
   },

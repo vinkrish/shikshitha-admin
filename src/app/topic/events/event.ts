@@ -14,4 +14,5 @@ export class Event {
 	createdBy: String;
 	createdDate: String;
 	parentEventId: number;
+	isSchool: boolean;
 }

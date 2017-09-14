@@ -4,6 +4,7 @@ import { ClassSubjectGroupComponent } from './class-subject-group/class-subject-
 import { subjectGroupRoutes } from './subject-group/subject-group.routes'
 import { SubjectGroupSubjectComponent } from './subject-group-subject/subject-group-subject.component'
 import { SubjectStudentComponent } from './subject-student/subject-student.component';
+import { ClassEventComponent } from './class-event/class-event.component';
 import { subjectTeacherRoutes } from './subject-teacher/subject-teacher.routes';
 import { subjectsRoutes } from './subjects/subjects.routes';
 import { eventRoutes } from './events/event.routes';
@@ -40,6 +41,14 @@ export const TopicRoutes: Routes = [
     },
     ...subjectTeacherRoutes,
     ...subjectsRoutes,
-    ...eventRoutes ]
+    ...eventRoutes,
+    {
+      path: 'class-event',
+      component: ClassEventComponent,
+      data: {
+        heading: 'Class Event'
+      },
+      canActivate: [LoggedInGuard]
+    }]
   }
 ];
