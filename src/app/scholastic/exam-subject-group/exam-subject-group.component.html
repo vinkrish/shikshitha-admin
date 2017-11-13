@@ -62,8 +62,8 @@
         <div class="form-group row">
           <label class="col-md-2">Subject Group: </label>
           <div class="col-md-4">
-            <select class="form-control" required [ngModel]="examSubjectGroup.subjectGroupId" (ngModelChange)="csgSelected($event)">
-              <option *ngFor="let csg of classSubjectGroups" [ngValue]="csg.subjectGroupId">{{csg.subjectGroupName}}</option>
+            <select class="form-control" name="subjectGroup" required [ngModel]="examSubjectGroup.subjectGroupId" (change)="csgSelected($event.target.value)">
+              <option *ngFor="let csg of classSubjectGroups" [value]="csg.subjectGroupId">{{csg.subjectGroupName}}</option>
             </select>
           </div>
         </div>

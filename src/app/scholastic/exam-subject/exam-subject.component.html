@@ -101,38 +101,38 @@
         <div class="form-group row">
           <label class="col-md-2">Type: </label>
           <div class="col-md-4">
-            <input class="form-control" required [(ngModel)]="examSubject.type" placeholder="Type" />
+            <input class="form-control" name="type1" required [(ngModel)]="examSubject.type" placeholder="Type" />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-2">Maximum Mark: </label>
           <div class="col-md-4">
-            <input class="form-control" required [(ngModel)]="examSubject.maximumMark" placeholder="Maximum Mark" />
+            <input class="form-control" name="maxMark1" required [(ngModel)]="examSubject.maximumMark" placeholder="Maximum Mark" />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-2">Fail Mark: </label>
           <div class="col-md-4">
-            <input class="form-control" required [(ngModel)]="examSubject.failMark" placeholder="Fail Mark" />
+            <input class="form-control" name="failMark1" required [(ngModel)]="examSubject.failMark" placeholder="Fail Mark" />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-2">Calculation: </label>
           <div class="col-md-4">
-            <input class="form-control" required [(ngModel)]="examSubject.calculation" type="number" placeholder="Calculation" />
+            <input class="form-control" name="cal1" required [(ngModel)]="examSubject.calculation" type="number" placeholder="Calculation" />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-2">Percentage: </label>
           <div class="col-md-4">
-            <input class="form-control" required [(ngModel)]="examSubject.percentage" placeholder="Percentage" />
+            <input class="form-control" name="per1" required [(ngModel)]="examSubject.percentage" placeholder="Percentage" />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-2">Subject: </label>
           <div class="col-md-4">
-            <select class="form-control" required [ngModel]="examSubject.subjectId" (ngModelChange)="subjectSelected($event)">
-              <option *ngFor="let sgs of subjectGroupSubjects" [ngValue]="sgs.subjectId">{{sgs.subjectName}}</option>
+            <select class="form-control" name="subject1" required [ngModel]="examSubject.subjectId" (change)="subjectSelected($event)">
+              <option *ngFor="let sgs of subjectGroupSubjects" [value]="sgs.subjectId">{{sgs.subjectName}}</option>
             </select>
           </div>
         </div>
@@ -161,38 +161,38 @@
         <div class="form-group row">
           <label class="col-md-2">Type: </label>
           <div class="col-md-4">
-            <input class="form-control" required [(ngModel)]="examSubject.type" placeholder="Type" />
+            <input class="form-control" name="type2" required [(ngModel)]="examSubject.type" placeholder="Type" />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-2">Maximum Mark: </label>
           <div class="col-md-4">
-            <input class="form-control" required [(ngModel)]="examSubject.maximumMark" placeholder="Maximum Mark" />
+            <input class="form-control" name="maxMark2" required [(ngModel)]="examSubject.maximumMark" placeholder="Maximum Mark" />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-2">Fail Mark: </label>
           <div class="col-md-4">
-            <input class="form-control" required [(ngModel)]="examSubject.failMark" placeholder="Fail Mark" />
+            <input class="form-control" name="failMark2" required [(ngModel)]="examSubject.failMark" placeholder="Fail Mark" />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-2">Calculation: </label>
           <div class="col-md-4">
-            <input class="form-control" required [(ngModel)]="examSubject.calculation" type="number" placeholder="Calculation" />
+            <input class="form-control" name="cal2" required [(ngModel)]="examSubject.calculation" type="number" placeholder="Calculation" />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-2">Percentage: </label>
           <div class="col-md-4">
-            <input class="form-control" required [(ngModel)]="examSubject.percentage" placeholder="Percentage" />
+            <input class="form-control" name="per2" required [(ngModel)]="examSubject.percentage" placeholder="Percentage" />
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-2">Subject: </label>
           <div class="col-md-4">
-            <select class="form-control" required [ngModel]="examSubject.subjectId" (ngModelChange)="partitionSubjectSelected($event)">
-              <option *ngFor="let sub of partitionSubjects" [ngValue]="sub.id">{{sub.subjectName}}</option>
+            <select class="form-control" name="subject2" required [ngModel]="examSubject.subjectId" (change)="partitionSubjectSelected($event)">
+              <option *ngFor="let sub of partitionSubjects" [value]="sub.id">{{sub.subjectName}}</option>
             </select>
           </div>
         </div>

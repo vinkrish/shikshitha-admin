@@ -118,7 +118,7 @@ export class ExamSubjectGroupComponent implements OnInit {
   csgSelected(csgId) {
       for (var i = 0; i < this.classSubjectGroups.length; i++) {
         if (this.classSubjectGroups[i].subjectGroupId == csgId) {
-          this.examSubjectGroup.subjectGroupId = csgId;
+          this.examSubjectGroup.subjectGroupId = this.classSubjectGroups[i].subjectGroupId;
           this.examSubjectGroup.subjectGroupName = this.classSubjectGroups[i].subjectGroupName;
         }
       }
