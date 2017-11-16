@@ -3,7 +3,9 @@ export class Mark{
 	examId: number;
 	subjectId: number;
 	sectionId: number;
+	rollNo: number;
 	studentId: number;
+	studentName: string;
 	mark: number;
 	grade: string;
 }

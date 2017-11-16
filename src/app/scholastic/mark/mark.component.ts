@@ -175,7 +175,9 @@ export class MarkComponent implements OnInit {
     marc.examId = this.selectedExam.id;
     marc.subjectId = this.selectedExamSubject.subjectId;
     marc.sectionId = this.selectedSection.id;
+    marc.rollNo = this.students[index].rollNo;
     marc.studentId = this.students[index].id;
+    marc.studentName = this.students[index].name;
     marc.grade = '';
     this.marks.push(marc);
   }
@@ -185,6 +187,8 @@ export class MarkComponent implements OnInit {
       for (var j = 0; j < this.existingMarks.length; j++) {
         if (this.existingMarks[j].studentId == this.marks[i].studentId) {
           this.marks[i].id = this.existingMarks[j].id;
+          this.marks[i].rollNo = this.existingMarks[j].rollNo;
+          this.marks[i].studentName = this.existingMarks[j].studentName;
           this.marks[i].mark = this.existingMarks[j].mark;
           this.marks[i].grade = this.existingMarks[j].grade;
         }

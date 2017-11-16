@@ -131,7 +131,7 @@
         <div class="form-group row">
           <label class="col-md-2">Subject: </label>
           <div class="col-md-4">
-            <select class="form-control" name="subject1" required [ngModel]="examSubject.subjectId" (change)="subjectSelected($event)">
+            <select class="form-control" name="subject1" required [ngModel]="examSubject.subjectId" (change)="subjectSelected($event.target.value)">
               <option *ngFor="let sgs of subjectGroupSubjects" [value]="sgs.subjectId">{{sgs.subjectName}}</option>
             </select>
           </div>
@@ -191,7 +191,7 @@
         <div class="form-group row">
           <label class="col-md-2">Subject: </label>
           <div class="col-md-4">
-            <select class="form-control" name="subject2" required [ngModel]="examSubject.subjectId" (change)="partitionSubjectSelected($event)">
+            <select class="form-control" name="subject2" required [ngModel]="examSubject.subjectId" (change)="partitionSubjectSelected($event.target.value)">
               <option *ngFor="let sub of partitionSubjects" [value]="sub.id">{{sub.subjectName}}</option>
             </select>
           </div>

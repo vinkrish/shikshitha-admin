@@ -167,7 +167,9 @@ export class ActivityScoreComponent implements OnInit {
   initScore(index: number) {
     var actscore = new ActivityScore();
     actscore.activityId = this.selectedActivity.id;
+    actscore.rollNo = this.students[index].rollNo;
     actscore.studentId = this.students[index].id;
+    actscore.studentName = this.students[index].name;
     actscore.grade = '';
     this.score.push(actscore);
   }
@@ -208,6 +210,8 @@ export class ActivityScoreComponent implements OnInit {
       for (var j = 0; j < this.existingScore.length; j++) {
         if (this.existingScore[j].studentId == this.score[i].studentId) {
           this.score[i].id = this.existingScore[j].id;
+          this.score[i].rollNo = this.existingScore[j].rollNo;
+          this.score[i].studentName = this.existingScore[j].studentName;
           this.score[i].mark = this.existingScore[j].mark;
           this.score[i].grade = this.existingScore[j].grade;
         }

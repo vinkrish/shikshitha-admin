@@ -177,7 +177,9 @@ export class SubActivityScoreComponent implements OnInit {
   initScore(index: number) {
     var subActscore = new SubActivityScore();
     subActscore.subActivityId = this.selectedSubActivity.id;
+    subActscore.rollNo = this.students[index].rollNo;
     subActscore.studentId = this.students[index].id;
+    subActscore.studentName = this.students[index].name;
     subActscore.grade = '';
     this.score.push(subActscore);
   }
@@ -235,6 +237,8 @@ export class SubActivityScoreComponent implements OnInit {
       for (var j = 0; j < this.existingScore.length; j++) {
         if (this.existingScore[j].studentId == this.score[i].studentId) {
           this.score[i].id = this.existingScore[j].id;
+          this.score[i].rollNo = this.existingScore[j].rollNo;
+          this.score[i].studentName = this.existingScore[j].studentName;
           this.score[i].mark = this.existingScore[j].mark;
           this.score[i].grade = this.existingScore[j].grade;
         }
