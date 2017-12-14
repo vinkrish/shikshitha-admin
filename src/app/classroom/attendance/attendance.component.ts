@@ -12,6 +12,7 @@ import { ClassService } from '../class/class.service';
 import { SectionService } from '../section/section.service';
 import { AttendanceService } from './attendance.service';
 import { CookieService } from 'angular2-cookie/core';
+import {saveAs as importedSaveAs} from "file-saver";
 
 @Component({
   selector: 'ui-attendance',
@@ -116,6 +117,17 @@ export class AttendanceComponent implements OnInit {
 	}
   }
 
+  downloadAttendance() {
+	this.attendanceService
+	.downloadAttendance(this.selectedClass.className, this.selectedSection.sectionName, this.selectedSection.id, this.dateAttendance)
+	.subscribe(data => {
+		const blob = new Blob([data],
+        { type: 'application/vnd.ms-excel' });
+    	const file = new File([blob], 'attendance.xlsx',
+        { type: 'application/vnd.ms-excel' });
+    	importedSaveAs(file);
+	})
+  }
 
   fetchAttendance() {
   	this.noAbsentee = "";

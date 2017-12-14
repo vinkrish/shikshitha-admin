@@ -1,18 +1,30 @@
 import { Injectable }    from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, RequestOptions, ResponseContentType } from '@angular/http';
 import { CookieService } from 'angular2-cookie/core';
 import { Homework }      from './homework';
 import { GlobalConstant }from '../../shared/global.const';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class HomeworkService {
+  private fileUrl = GlobalConstant.BASE_API_URL + 'excel';
   private homeworkUrl = GlobalConstant.BASE_API_URL + 'homework';
   private headers;
 
   constructor(private http: Http, private cookieService: CookieService) {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.headers.append('Authorization', `Bearer ${this.cookieService.get("auth_token")}`);
+  }
+
+  downloadHomework(className: String, sectionName: String, sectionId: number, homeworkDate: Date): Observable<Blob> {
+    let url = `${this.fileUrl}/${className}/${sectionName}/${sectionId}/hw/${homeworkDate}`;
+    let options = new RequestOptions({responseType: ResponseContentType.Blob });
+    return this.http.get(url, options)
+        .map(res => res.blob())
+        .catch(this.handleError)
   }
 
   getHomeworks(sectionId: number, homeworkDate: Date): Promise<Homework[]> {

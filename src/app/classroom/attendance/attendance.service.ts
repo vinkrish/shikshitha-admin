@@ -1,12 +1,16 @@
 import { Injectable }    from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, RequestOptions, ResponseContentType } from '@angular/http';
 import { CookieService } from 'angular2-cookie/core';
 import { Attendance }    from './attendance';
 import { GlobalConstant }from '../../shared/global.const';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AttendanceService {
+  private fileUrl = GlobalConstant.BASE_API_URL + 'excel';
   private attendanceUrl = GlobalConstant.BASE_API_URL + 'attendance';
   private dailyMarkedUrl = GlobalConstant.BASE_API_URL + 'attendance/daily/marked';
   private dailyUnmarkedUrl = GlobalConstant.BASE_API_URL + 'attendance/daily/unmarked';
@@ -17,6 +21,14 @@ export class AttendanceService {
   constructor(private http: Http, private cookieService: CookieService) {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.headers.append('Authorization', `Bearer ${this.cookieService.get("auth_token")}`);
+  }
+
+  downloadAttendance(className: String, sectionName: String, sectionId: number, attendanceDate: Date): Observable<Blob> {
+    let url = `${this.fileUrl}/${className}/${sectionName}/${sectionId}/att/${attendanceDate}`;
+    let options = new RequestOptions({responseType: ResponseContentType.Blob });
+    return this.http.get(url, options)
+        .map(res => res.blob())
+        .catch(this.handleError)
   }
 
   dailyAttendanceMarked(sectionId: number, dateAttendance: Date): Promise<Attendance[]> {

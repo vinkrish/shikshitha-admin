@@ -20,7 +20,8 @@
       <div *ngIf="selectedClass.attendanceType == 'Daily'" class="form-group row">
         <label for="date" class="col-md-2">Date :</label>
         <input type="date" name="date" required [(ngModel)]="dateAttendance" placeholder="Attendance Date" />&nbsp;&nbsp;
-        <button class="btn btn-primary btn-sm" (click)="fetchAttendance()">Fetch Attendance</button>
+        <button class="btn btn-primary btn-sm" (click)="fetchAttendance()">Fetch Attendance</button>&nbsp;&nbsp;
+        <button class="btn btn-primary btn-sm" (click)="downloadAttendance()">Download Attendance</button>
       </div>
       <div *ngIf="selectedClass.attendanceType == 'Session'">
         <label for="sessionDate">Date :</label>

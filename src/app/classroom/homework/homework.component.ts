@@ -8,6 +8,7 @@ import { ClassService } from '../class/class.service';
 import { SectionService } from '../section/section.service';
 import { HomeworkService } from './homework.service';
 import { CookieService } from 'angular2-cookie/core';
+import {saveAs as importedSaveAs} from "file-saver";
 
 @Component({
   selector: 'ui-homework',
@@ -70,6 +71,18 @@ export class HomeworkComponent {
 	this.cookieService.put("sectionName", this.selectedSection.sectionName);
 	this.selectingSection = true;
 	this.homeworks = null;
+  }
+
+  downloadHomework() {
+	this.homeworkService
+	.downloadHomework(this.selectedClass.className, this.selectedSection.sectionName, this.selectedSection.id, this.homeworkDate)
+	.subscribe(data => {
+		const blob = new Blob([data],
+        { type: 'application/vnd.ms-excel' });
+    	const file = new File([blob], 'homework.xlsx',
+        { type: 'application/vnd.ms-excel' });
+    	importedSaveAs(file);
+	})
   }
 
   getHomeworks(id: number, date: Date) {

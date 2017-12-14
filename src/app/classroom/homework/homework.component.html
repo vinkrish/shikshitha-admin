@@ -20,7 +20,8 @@
       <div class="form-group row">
         <label for="date" class="col-md-2">Date :</label>
         <input type="date" name="date" required [(ngModel)]="homeworkDate" placeholder="Homework Date" />&nbsp;&nbsp;
-        <button type="submit" class="btn btn-primary btn-sm">Fetch Homework</button>
+        <button type="submit" class="btn btn-primary btn-sm">Fetch Homework</button>&nbsp;&nbsp;
+        <button class="btn btn-primary btn-sm" (click)="downloadHomework()">Download Homework</button>
       </div>
     </form>
   </div>
