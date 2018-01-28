@@ -51,9 +51,19 @@
           <td>
             <div class="radio" *ngFor="let sgs of subjectGroupSubjects">
               <label>
-                <input type="radio" [(ngModel)]="ss.subjectId" [value]="sgs.subjectId"> {{sgs.subjectName}}
+                <input type="radio" [checked]="ss.subjectId === sgs.subjectId" (change)="subjectSelected(ss.studentId, sgs)" [value]="sgs.subjectId"> {{sgs.subjectName}}
               </label>
             </div>
+            <!--ul>
+              <li class="radio" *ngFor="let sgs of subjectGroupSubjects">
+                 <input type="radio" [checked]="sgs.id == selectedOption.id" [(ngModel)]="ss.subjectId" (ngModelChange)="subjectSelected($event)" [value]="sgs.id"> {{sgs.subjectName}}
+              </li>
+            </ul-->
+            <!--tr class="radio" *ngFor="let sgs of subjectGroupSubjects">
+              <td>
+                <input type="radio" [(ngModel)]="ss.subjectId" (ngModelChange)="subjectSelected($event)" [value]="sgs.id"> {{sgs.subjectName}}
+              </td>
+            </tr-->
           </td>
         </tr>
       </tbody>

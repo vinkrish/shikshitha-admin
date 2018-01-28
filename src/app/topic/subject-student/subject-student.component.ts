@@ -88,10 +88,12 @@ export class SubjectStudentComponent implements OnInit {
   }
 
   subjectGroupSelected(selectedCSG){
-     this.selectedCSG = selectedCSG;
-     this.getSubjectGroupSubjects(this.selectedCSG.subjectGroupId);
-     this.getSubjectStudents();
-   }
+    this.subjectGroupSubjects = [];
+    this.selectedSGS = new SubjectGroupSubject();
+    this.selectedCSG = selectedCSG;
+    this.getSubjectGroupSubjects(this.selectedCSG.subjectGroupId);
+    this.getSubjectStudents();
+  }
 
   getSubjectGroupSubjects(id: number) {
       this.sgsService
@@ -103,9 +105,18 @@ export class SubjectStudentComponent implements OnInit {
     }
 
   subjectGroupSubjectSelected(selectedSGS){
-      this.selectedSGS = selectedSGS;
-      for(var i=0; i<this.ssList.length; i++){
-        this.ssList[i].subjectId = selectedSGS.subjectId;
+    this.selectedSGS = selectedSGS;
+    for(var i=0; i<this.ssList.length; i++){
+      this.ssList[i].subjectId = selectedSGS.subjectId;
+    }
+  }
+
+  subjectSelected(id: number, selectedSubject) {
+    for(var i=0; i<this.ssList.length; i++){
+      if(this.ssList[i].studentId == id) {
+        this.ssList[i].subjectId = selectedSubject.subjectId;
+        break;
+      }
     }
   }
 
