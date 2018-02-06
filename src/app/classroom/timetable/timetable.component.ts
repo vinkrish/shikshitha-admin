@@ -132,7 +132,6 @@ export class TimetableComponent {
 		// this.getTimetable(this.selectedSection.id);
 	  })
 	  .catch(error => this.error = error);
-
   }
 
   insert() {

@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-block">
+    <div class="form-group row">
+      <label class="col-md-1">Class :</label>
+      <div class="col-md-4">
+        <select class="form-control" [ngModel]="selectedClass" (ngModelChange)="classSelected($event)">
+          <option *ngFor="let classs of classes" [ngValue]="classs">{{classs.className}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-1">Section :</label>
+      <div class="col-md-4">
+        <select class="form-control" [ngModel]="selectedSection" (ngModelChange)="sectionSelected($event)">
+          <option *ngFor="let section of sections" [ngValue]="section">{{section.sectionName}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Mobile</th>
+          <th>Fee Paid</th>
+          <th>Discount</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students" (click)="onSelect(student)" [class.selected]="student === selectedStudent">
+          <th scope="row">{{student.rollNo}}</th>
+          <td>{{student.name}}</td>
+          <td>{{student.username}}</td>
+          <td>{{student.feePaid}}</td>
+          <td>
+            <input type="number" [(ngModel)]="student.discount" />
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-primary btn-sm" (click)="update(student, $event)">
+              Update
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-primary btn-sm" (click)="detail(student, $event)">
+              Details
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="error" *ngIf="error">{{error}}</div>
+<div *ngIf="studentId">
+  <ui-fee-transaction [studentId]="studentId" (refreshClick)="refreshFees($event)" (close)="close($event)"></ui-fee-transaction>
+</div>

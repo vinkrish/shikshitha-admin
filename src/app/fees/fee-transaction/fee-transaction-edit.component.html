@@ -1,0 +1,33 @@
+<br>
+<div *ngIf="feeTransaction" class="card">
+  <div class="card-block">
+    <form (ngSubmit)="save()" #form="ngForm" ngNativeValidate>
+      <div class="form-group row">
+        <label for="paid" class="col-md-1">Amount</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="paid" required [(ngModel)]="feeTransaction.paid">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="paidOn" class="col-md-1">Date</label>
+        <div class="col-md-4">
+          <input type="date" class="form-control" name="paidOn" required [(ngModel)]="feeTransaction.paidOn">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="paymentType" class="col-md-1">Payment Type</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control" name="paymentType" required [(ngModel)]="feeTransaction.type">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="description" class="col-md-1">Description</label>
+        <div class="col-md-4">
+          <textarea class="form-control" rows="2" name="description" [(ngModel)]="feeTransaction.description"></textarea>
+        </div>
+      </div>
+      <button type="button" class="btn btn-normal btn-md" (click)="goBack()">Back</button>
+      <button type="submit" class="btn btn-success btn-md">Save</button>
+    </form>
+  </div>
+</div>

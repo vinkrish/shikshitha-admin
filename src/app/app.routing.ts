@@ -25,6 +25,9 @@ export const AppRoutes: Routes = [{
     path: 'coscholastic',
     loadChildren: './coscholastic/coscholastic.module#CoscholasticModule'
   }, {
+    path: 'fees',
+    loadChildren: './fees/fees.module#FeesModule'
+  }, {
     path: 'superadmin',
     loadChildren: './school/school.module#SchoolModule'
   }]

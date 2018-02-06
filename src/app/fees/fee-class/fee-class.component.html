@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-block">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Class Name</th>
+            <th>Total Amount (Rs)</th>
+            <th>Type</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let clas of classes" (click)="onSelect(clas)" [class.selected]="clas === selectedClass">
+            <td class="col-md-1">{{clas.className}}</td>
+            <td>
+              <input type="number" [(ngModel)]="clas.feeAmount" />
+            </td>
+            <td>
+              <select [(ngModel)]="clas.feeType">
+                <option *ngFor="let feeType of feeTypes">{{feeType}}</option>
+              </select>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-primary btn-sm" (click)="update(clas, $event)">
+                Update
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="error" *ngIf="error">{{error}}</div>

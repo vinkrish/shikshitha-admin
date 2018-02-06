@@ -192,6 +192,22 @@ const MENUITEMS = [
     ]
   },
   {
+    state: 'fees',
+    name: 'Fees',
+    type: 'sub',
+    icon: 'basic-postcard',
+    children: [
+      {
+        state: 'fee-class',
+        name: 'Class Fee'
+      },
+      {
+        state: 'fee-student',
+        name: 'Student Fee'
+      }
+    ]
+  },
+  {
     state: 'people',
     name: 'People',
     type: 'sub',

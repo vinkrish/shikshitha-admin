@@ -12,7 +12,7 @@ import { SubjectGroupSubjectService}from '../topic/subject-group-subject/subject
 import { SubjectTeacherService }    from '../topic/subject-teacher/subject-teacher.service';
 import { SubjectsService }        	from '../topic/subjects/subjects.service';
 import { EventService }             from '../topic/events/event.service';
-import { ClassEventService }               from '../topic/class-event/class-event.service';
+import { ClassEventService }        from '../topic/class-event/class-event.service';
 import { TeacherService }        	from '../people/teacher/teacher.service';
 import { TimetableService }        	from '../classroom/timetable/timetable.service';
 import { ExamService }        		from '../scholastic/exam/exam.service';
@@ -36,6 +36,9 @@ import { TopicPrimaryService }    	from '../coscholastic/cce-topic-primary/cce-t
 import { AspectPrimaryService }    	from '../coscholastic/cce-aspect-primary/cce-aspect-primary.service';
 import { TopicGradeService }    	from '../coscholastic/cce-topic-grade/cce-topic-grade.service';
 import { AspectGradeService }    	from '../coscholastic/cce-aspect-grade/cce-aspect-grade.service';
+import { FeeClassService }          from '../fees/fee-class/fee-class.service';
+import { FeeStudentService }        from '../fees/fee-student/fee-student.service';
+import { FeeTransactionService }    from '../fees/fee-transaction/fee-transaction.service';
 import { SchoolService }            from '../school/school.service';
 
 export const myServices = [
@@ -77,5 +80,8 @@ export const myServices = [
     AspectPrimaryService,
     TopicGradeService,
     AspectGradeService,
+    FeeClassService,
+    FeeStudentService,
+    FeeTransactionService,
     SchoolService
 ]

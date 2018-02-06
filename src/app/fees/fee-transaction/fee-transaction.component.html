@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-header">
+    {{studentName}} Fee
+  </div>
+  <div class="card-block">
+    <p>Careful with <code>delete</code> option</p>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Payment Type</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let feeTransaction of feeTransactions" (click)="onSelect(feeTransaction)" [class.selected]="feeTransaction === selectedFeeTransaction">
+            <td>{{feeTransaction.paid}}</td>
+            <td>{{feeTransaction.paidOn}}</td>
+            <td>{{feeTransaction.type}}</td>
+            <td>{{feeTransaction.description}}</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger btn-sm" (click)="delete(feeTransaction, $event)">
+                delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="error" *ngIf="error">{{error}}</div>
+<button type="button" class="btn btn-success btn-md" (click)="addClass()">Add New </button>
+<div *ngIf="addingFeeTransaction">
+  <ui-fee-transaction-detail (close)="close($event)"></ui-fee-transaction-detail>
+</div>
