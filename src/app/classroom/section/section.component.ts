@@ -1,4 +1,5 @@
 import { Component, OnInit }     from '@angular/core';
+import { Location }              from '@angular/common';
 import { Router }                from '@angular/router';
 import { Clas }                  from '../class/clas';
 import { Section }			         from './section';
@@ -22,20 +23,26 @@ export class SectionComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private _cookieService: CookieService,
+    private cookieService: CookieService,
     private classService: ClassService,
-    private sectionService: SectionService) { 
+    private sectionService: SectionService,
+    private location: Location) { 
   }
 
   ngOnInit() {
-    this.getClasses();
+    //this.location.subscribe(x => console.log(x));
     this.selectedClass = new Clas();
+    this.getClasses();
   }
 
   getClasses() {
     this.classService
       .getClasses()
-      .then(classes => this.classes = classes)
+      .then(classes => { 
+        this.classes = classes;
+        this.selectedClass.id = +this.cookieService.get("classId");
+        this.clasSelected(this.selectedClass.id);
+      })
       .catch(error => this.error = error);
     }
 
@@ -44,8 +51,27 @@ export class SectionComponent implements OnInit {
     this.sections = [];
     this.selectedClass = selectedClass;
     this.getSections(this.selectedClass.id);
-    this._cookieService.put("classId", "" + this.selectedClass.id);
-    this._cookieService.put("className", this.selectedClass.className);
+    this.cookieService.put("classId", "" + this.selectedClass.id);
+    this.cookieService.put("className", this.selectedClass.className);
+    this.addingSection = false;
+  }
+
+  clasSelected(classId) {
+    this.selectedSection = new Section();
+    this.sections = [];
+    for (var i = 0; i < this.classes.length; i++) {
+      if (this.classes[i].id == classId) {
+        this.selectedClass.id = classId;
+        this.selectedClass.className = this.classes[i].className;
+        this.selectedClass.schoolId = this.classes[i].schoolId;
+        this.selectedClass.attendanceType = this.classes[i].attendanceType;
+        this.selectedClass.teacherId = this.classes[i].teacherId;
+        break;
+      }
+    }
+    this.getSections(this.selectedClass.id);
+    this.cookieService.put("classId", "" + this.selectedClass.id);
+    this.cookieService.put("className", this.selectedClass.className);
     this.addingSection = false;
   }
 

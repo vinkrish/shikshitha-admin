@@ -12,7 +12,7 @@ import { CookieService } from 'angular2-cookie/core';
 
 export class FeeTransactionComponent implements OnChanges, OnInit {
   @Input() studentId: number;
-  @Output() refreshClick: EventEmitter<String> = new EventEmitter<String>();
+  @Output() refreshClick: EventEmitter<number> = new EventEmitter<number>();
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
   feeTransactions: FeeTransaction[];
@@ -29,20 +29,20 @@ export class FeeTransactionComponent implements OnChanges, OnInit {
   ngOnInit() {
     this.studentId = +this.cookieService.get("studentId");
     this.studentName = this.cookieService.get("studentName");
-	  this.getClasses(this.studentId);
+	  this.getFeeTransactions(this.studentId);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     this.studentId = +this.cookieService.get("studentId");
     this.studentName = this.cookieService.get("studentName");
     this.feeTransactions = [];
-    this.getClasses(this.studentId);
+    this.getFeeTransactions(this.studentId);
     // changes.prop contains the old and the new value...
   }
 
-  getClasses(studentId) {
+  getFeeTransactions(studentId) {
 	this.feeService
-	  .getClasses(studentId)
+	  .getFeeTransactions(studentId)
 	  .then(feeTransactions => this.feeTransactions = feeTransactions)
 	  .catch(error => this.error = error);
   }
@@ -54,7 +54,7 @@ export class FeeTransactionComponent implements OnChanges, OnInit {
 
   close(savedClass: FeeTransaction) {
 	  this.addingFeeTransaction = false;
-	  if (savedClass) { this.getClasses(this.studentId); }
+	  if (savedClass) { this.getFeeTransactions(this.studentId); }
     this.refreshClick.emit();
   }
 

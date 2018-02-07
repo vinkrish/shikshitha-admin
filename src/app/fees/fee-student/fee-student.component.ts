@@ -87,11 +87,6 @@ export class FeeStudentComponent implements OnInit {
     this.addingStudent = false;
   }
 
-  close(savedStudent: FeeStudent) {
-    this.addingStudent = false;
-    if (savedStudent) { this.getStudents(this.selectedSection.id); }
-  }
-
   update(student: FeeStudent, event: any) {
     event.stopPropagation();
     this.studentService
@@ -101,7 +96,7 @@ export class FeeStudentComponent implements OnInit {
       .catch(error => this.error = error);
   }
 
-  refreshFees(event) {
+  refreshFees() {
     this.getStudents(this.selectedSection.id);
   }
 

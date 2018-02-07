@@ -16,7 +16,7 @@ export class FeeTransactionService {
     this.headers.append('Authorization', `Bearer ${this.cookieService.get("auth_token")}`);
   }
 
-  getClasses(studentId: number): Promise<FeeTransaction[]> {
+  getFeeTransactions(studentId: number): Promise<FeeTransaction[]> {
     //let url = `${this.feeUrl}/student/${+this.cookieService.get("studentId")}`;
     let url = `${this.feeUrl}/student/${studentId}`;
     return this.http
@@ -26,8 +26,8 @@ export class FeeTransactionService {
       .catch(this.handleError);
   }
 
-  getClass(studentId:number, id: number) {
-    return this.getClasses(id)
+  getFeeTransaction(studentId:number, id: number) {
+    return this.getFeeTransactions(id)
       .then(classes => classes.find(feeTransaction => feeTransaction.id === id));
   }
 

@@ -39,10 +39,7 @@ export class SectionEditComponent implements OnInit, OnDestroy {
         let sectionId = +params['id'];
         this.navigated = true;
         this.sectionService.getSection(this.classId, sectionId)
-            .then(section => {
-              this.section = section;
-              this.section.classId = this.classId;
-            });
+            .then(section => this.section = section);
       } else {
         this.navigated = false;
         this.section = new Section();

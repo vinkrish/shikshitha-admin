@@ -18,7 +18,7 @@
         <tbody>
           <tr *ngFor="let feeTransaction of feeTransactions" (click)="onSelect(feeTransaction)" [class.selected]="feeTransaction === selectedFeeTransaction">
             <td>{{feeTransaction.paid}}</td>
-            <td>{{feeTransaction.paidOn}}</td>
+            <td>{{feeTransaction.paidOn | date:'dd-MM-yyyy'}}</td>
             <td>{{feeTransaction.type}}</td>
             <td>{{feeTransaction.description}}</td>
             <td>

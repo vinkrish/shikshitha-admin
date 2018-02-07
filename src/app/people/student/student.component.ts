@@ -42,14 +42,27 @@ export class StudentComponent implements OnInit {
   getClasses() {
     this.classService
       .getClasses()
-      .then(classes => this.classes = classes)
+      .then(classes => {
+        this.classes = classes;
+        this.selectedClass.id = +this.cookieService.get("classId");
+        this.classSelected(this.selectedClass.id);
+      })
       .catch(error => this.error = error);
     }
 
-  classSelected(selectedClass) {
+  classSelected(classId) {
     this.selectedSection = new Section(0, "");
     this.sections = [];
-    this.selectedClass = selectedClass;
+    for (var i = 0; i < this.classes.length; i++) {
+      if (this.classes[i].id == classId) {
+        this.selectedClass.id = classId;
+        this.selectedClass.className = this.classes[i].className;
+        this.selectedClass.schoolId = this.classes[i].schoolId;
+        this.selectedClass.attendanceType = this.classes[i].attendanceType;
+        this.selectedClass.teacherId = this.classes[i].teacherId;
+        break;
+      }
+    }
     this.getSections(this.selectedClass.id);
     this.cookieService.put("classId", "" + this.selectedClass.id);
     this.cookieService.put("className", this.selectedClass.className);
@@ -61,12 +74,24 @@ export class StudentComponent implements OnInit {
   getSections(id: number) {
     this.sectionService
       .getSections(id)
-      .then(sections => this.sections = sections)
+      .then(sections => {
+        this.sections = sections;
+        this.selectedSection.id = +this.cookieService.get("sectionId");
+        this.sectionSelected(this.selectedSection.id);
+      })
       .catch(error => this.error = error);
   }
 
-  sectionSelected(selectedSection) {
-    this.selectedSection = selectedSection;
+  sectionSelected(sectionId) {
+    for (var i = 0; i < this.sections.length; i++) {
+      if (this.sections[i].id == sectionId) {
+        this.selectedSection.id = sectionId;
+        this.selectedSection.sectionName = this.sections[i].sectionName;
+        this.selectedSection.classId = this.sections[i].classId;
+        this.selectedSection.teacherId = this.sections[i].teacherId;
+        break;
+      }
+    }
     this.getStudents(this.selectedSection.id);
     this.cookieService.put("sectionId", "" + this.selectedSection.id);
     this.cookieService.put("sectionName", this.selectedSection.sectionName);
